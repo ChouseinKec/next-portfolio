@@ -23,33 +23,30 @@ export default function Offshore() {
             {/* Control Panel */}
             <Window title={'control'}>
                 <p>
-                    Between <b>2018 and 2020</b>, I worked as a <b>rope-access electrician</b> in the offshore wind industry, where I undertook a variety of tasks.
-                    <br />
-                    I installed and calibrated sensors on the flaps of wind turbine nacelles, ensuring their proper integration with the control panel systems to monitor and detect the open or closed status of the flaps.
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
                 </p>
             </Window>
 
             {/* Cable Loop */}
             <Window title={'cable'}>
                 <p>
-                    I conducted routine maintenance on cable loops, which included inspections to identify and repair minor damages.
-                    In cases where cables were extensively damaged, I led the replacement of the entire cable.
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
                 </p>
             </Window>
 
             {/* Bolting Campaign */}
             <Window title={'bolting'}>
                 <p>
-                    Additionally, I participated in bolting campaigns, where my primary responsibility was to inspect and verify the torque and condition of various bolts.
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
                 </p>
             </Window>
 
             <Album title={'album'} urls={['/offshore/offshore (1).jpg', '/offshore/offshore (2).jpg', '/offshore/offshore (3).jpg']}>
                 <>
                     {/* Text */}
-                    Below, you will find a selection of videos and images showcasing the training and work i undertook.
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
                     <br />
-                    Please note that due to photography restrictions on-site, i am unable to share all.
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                 </>
             </Album>
 

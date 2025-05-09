@@ -27,14 +27,14 @@ const Banner: React.FC = () => {
                     <span>Feel free to</span>
                     <div className={styles.textCV}>
                         <div className={styles.textCVDownload}>
-                            <a href={'/CK-CV-Public.pdf'} target='_blank'> Download CV </a>
+                            <a href={'/cv.pdf'} target='_blank'> Download CV </a>
                         </div>
                     </div>
                     <span>-or-</span>
                     <button className={styles.textContact}>
                         <span className={styles.textContactName}>Contact Me</span>
                         <span className={styles.textContactGalaxy} />
-                        <div className={styles.textContactEmail}><span>chouseinkechagia&#64;outlook&#46;com</span></div>
+                        <div className={styles.textContactEmail}><span>someemail&#64;outlook&#46;com</span></div>
                     </button>
 
                 </div>

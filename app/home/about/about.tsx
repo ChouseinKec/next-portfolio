@@ -13,14 +13,14 @@ const About: React.FC<About> = ({ id = 'about' }) => {
             <div className={styles.text}>
                 <p>
                     <span>
-                        Hello, I am <b>Chousein Kechagia</b> from <b>Greece</b>. I possess a deep passion for continuous learning, guided by the philosophy of <b>&quot;understanding rather than memorizing&quot;</b>. This mindset drives me to explore subjects in depth, rapidly and efficiently, allowing me to grasp the fundamental principles of how things work.
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
                     </span>
                 </p>
 
                 <p>
                     <span>
-                        My primary interests include <b>web development, robotics, home automation, and networking</b>.
-                        While I do not consider myself a professional in all these areas, I am primarily self-taught and continually dedicate my free time to research, learn and build new things.
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
                     </span>
                 </p>
             </div>
