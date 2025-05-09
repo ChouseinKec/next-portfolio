@@ -1,0 +1,55 @@
+.tabs {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+
+	.header {
+		width: 92%;
+		padding: 0.5vw;
+
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		gap: 0.5vw;
+		overflow: auto;
+
+		scrollbar-color: rgba(255, 255, 255, 0.5) transparent;
+		scrollbar-width: thin;
+
+		label {
+			color: white;
+			font-size: 1.3vw;
+			padding: 0.5vw 1vw;
+			background: rgba(255, 255, 255, 0.2);
+
+			box-sizing: border-box;
+
+			cursor: pointer;
+
+			&:hover {
+				border-bottom: 1px solid white;
+			}
+		}
+	}
+
+	.tab {
+		width: 100%;
+		padding: 25px;
+
+		display: none;
+		color: white;
+
+		input[type='radio'] {
+			display: none;
+		}
+
+		&:has(input[type='radio']:checked) {
+			display: block;
+		}
+	}
+
+	.text {
+		padding: 0;
+	}
+}

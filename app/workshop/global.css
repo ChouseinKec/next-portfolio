@@ -1,0 +1,15 @@
+footer {
+    position: fixed !important;
+    z-index: 10 !important;
+}
+
+body {
+    --modal-background: rgba(0, 0, 0, 0.4);
+}
+
+@media (orientation: portrait) {
+	body {
+		height: 100vh;
+		overflow: hidden !important;
+	}
+}

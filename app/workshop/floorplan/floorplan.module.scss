@@ -1,0 +1,162 @@
+.floorplan {
+	.plan {
+		width: 100%;
+		height: 100%;
+
+		position: absolute;
+		top: 0;
+		left: 0;
+
+		opacity: 0.8;
+
+		.inputs {
+			width: 70%;
+			overflow: hidden;
+
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+
+			align-items: center;
+			justify-content: center;
+			gap: 5px;
+
+			position: absolute;
+			top: 20%;
+			left: 15%;
+
+			color: white;
+			font-size: 17px;
+			font-family: Monomaniac One, Monomaniac One Fallback;
+
+			.input {
+				padding: 10px;
+
+				display: flex;
+				flex-direction: column-reverse;
+				justify-content: space-between;
+				align-items: center;
+				gap: 5px;
+
+				background: rgba(255, 255, 255, 0.2);
+
+				label,
+				input {
+					text-align: center;
+					cursor: pointer;
+				}
+
+				input {
+					display: none;
+				}
+
+				&:hover {
+					transition: all 0.2s;
+					transform: scale(1.1);
+				}
+
+				&:has(input:checked) {
+					// border-bottom: 2px solid white;
+					background: rgba(0, 255, 115, 0.3);
+				}
+			}
+		}
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+
+			position: absolute;
+			top: 75%;
+			left: 45%;
+
+			transform: translate(-50%, -50%);
+			mix-blend-mode: lighten;
+			filter: brightness(1.2);
+			pointer-events: none;
+
+			&:not(:nth-of-type(1)) {
+				display: none;
+			}
+		}
+
+		&:has(input[id='bathroom-led']:checked) {
+			.bathroomLed {
+				display: block !important;
+			}
+		}
+
+		&:has(input[id='bathroom-light']:checked) {
+			.bathroomLight {
+				display: block !important;
+			}
+		}
+
+		&:has(input[id='bedroom-led']:checked) {
+			.bedroomLed {
+				display: block !important;
+			}
+		}
+
+		&:has(input[id='entrance-led']:checked) {
+			.entranceLed {
+				display: block !important;
+			}
+		}
+
+		&:has(input[id='kitchen-led']:checked) {
+			.kitchenLed {
+				display: block !important;
+			}
+		}
+
+		&:has(input[id='kitchen-spots']:checked) {
+			.kitchenSpots {
+				display: block !important;
+			}
+		}
+
+		&:has(input[id='livingroom-led']:checked) {
+			.livingroomLed {
+				display: block !important;
+			}
+		}
+
+		&:has(input[id='livingroom-light']:checked) {
+			.livingroomLight {
+				display: block !important;
+			}
+		}
+
+		&:has(input[id='livingroom-tv']:checked) {
+			.livingroomTV {
+				display: block !important;
+			}
+		}
+
+		&:has(input[id='livingroom-aquariums']:checked) {
+			.livingroomAquariums {
+				display: block !important;
+			}
+		}
+
+		&:has(input[id='kitchen-uv']:checked) {
+			.kitchenUV {
+				display: block !important;
+			}
+		}
+
+		&:has(input[id='workshop-led']:checked) {
+			.workshopLed {
+				display: block !important;
+			}
+		}
+
+		&:has(input[id='workshop-light']:checked) {
+			.workshopLight {
+				display: block !important;
+			}
+		}
+	}
+}

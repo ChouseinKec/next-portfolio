@@ -1,0 +1,212 @@
+@use './animations' as *;
+
+.timeline {
+	display: flex;
+	flex-direction: column;
+	padding: 0 20vmax;
+	gap: 7vmax;
+
+	position: relative;
+}
+
+.line {
+	height: 65vh;
+	display: grid;
+	grid-template-columns: 0.6fr 1fr;
+	grid-template-rows: 1fr 1fr;
+	align-items: flex-start;
+	column-gap: 5vmax;
+
+	&:nth-child(even) {
+		transform: scaleX(-1);
+
+		.text {
+			transform: scaleX(-1);
+		}
+	}
+
+	&:last-child {
+		grid-template-rows: 1fr;
+		.connector {
+			display: none;
+		}
+	}
+}
+
+.image {
+	position: relative;
+
+	svg {
+		transform: scale(1.4);
+		width: 100%;
+		height: auto;
+	}
+}
+
+.connector {
+	height: 22vmax;
+	width: 60vmax;
+
+	grid-column: 1/-1;
+	grid-row: 2;
+	transform: scaleX(-1.15) translateY(-3vmax);
+
+	stroke-dasharray: 1000;
+	opacity: 0;
+	animation-name: timelineConnector;
+	animation-timeline: view(y 0% 0%);
+
+	pointer-events: none;
+}
+
+.text {
+	grid-column: 2;
+	grid-row: 1;
+
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+
+	font-family: Monomaniac One, serif;
+	color: white;
+
+	&Title,
+	&Date,
+	&Content {
+		background-clip: text;
+		-webkit-background-clip: text;
+
+		opacity: 0;
+
+		animation-name: textTimeline;
+		animation-timeline: view(y -25% 0%);
+	}
+
+	&Title {
+		font-size: 4vmax;
+		white-space: nowrap;
+		span {
+			font-size: 1.8vmax;
+			padding-left: 1vmax;
+		}
+	}
+
+	&Date {
+		font-size: 1.3vmax;
+		opacity: 0.75;
+	}
+
+	&Content {
+		font-size: 1.3vmax;
+		letter-spacing: 0.1vmax;
+		opacity: 0.5;
+		font-family: 'Darker Grotesque', serif;
+	}
+
+	&More {
+		width: 0;
+
+		display: inline-flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		align-items: center;
+		gap: 1vmax;
+
+		background: none;
+		border: none;
+		outline: none;
+
+		overflow: hidden;
+		white-space: nowrap;
+
+		font-family: Monomaniac One, serif;
+		color: white;
+		font-size: 1.3vmax;
+
+		opacity: 0.5;
+		z-index: 1;
+		cursor: pointer;
+
+		animation-name: moreTimeline;
+		animation-timeline: view(y -25% 0%);
+		transition: transform 0.5s;
+		text-decoration: none;
+		span {
+			opacity: 1;
+			font-size: 2vmax;
+		}
+
+		p {
+			&:after {
+				content: '...';
+				padding-left: 0.3vmax;
+				animation-name: moreLoop;
+				animation-duration: 1s;
+				animation-iteration-count: infinite;
+			}
+		}
+
+		&:hover {
+			transform: scale(1.2);
+		}
+	}
+}
+
+.vector {
+	opacity: 1;
+	&Glow {
+		animation-name: timelineGlow;
+		animation-timeline: view(y 25% 0%);
+		animation-fill-mode: forwards;
+	}
+
+	&Outline {
+		path {
+			stroke-dashoffset: 0;
+			stroke-dasharray: 0;
+			animation-name: timelineOutline;
+			animation-fill-mode: forwards;
+			animation-timeline: view(y 25% 0%);
+		}
+	}
+
+	&Background {
+		animation-name: timelineBackground;
+		animation-timeline: view(y -25% 0%);
+	}
+}
+
+@media (orientation: portrait) {
+	.timeline {
+		padding: 0 0vmax;
+		gap: 0vmax;
+	}
+
+	.line {
+		height: 45vh;
+		grid-template-columns: minmax(0, 0.4fr) minmax(0, 0.5fr);
+		grid-template-rows: 1fr 1fr;
+		column-gap: 1vmax;
+
+		&:last-child {
+			height: 25vh;
+			grid-template-rows: 1fr;
+		}
+	}
+
+	.text {
+		&Title {
+			font-size: 2.5vmax;
+			span {
+				font-size: 1.5vmax;
+				padding-left: 1vmax;
+			}
+		}
+	}
+	.connector {
+		height: 22vmax;
+		width: 60vmax;
+
+		transform: scaleX(-1) translateY(-3vmax) translateX(5vmax);
+	}
+}

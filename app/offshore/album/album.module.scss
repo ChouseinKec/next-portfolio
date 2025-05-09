@@ -1,0 +1,67 @@
+.album {
+	width: 100vw;
+	height: 100vh;
+	padding: 10vmax;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 7vmax;
+
+	position: relative;
+
+	scroll-snap-align: center;
+
+	z-index: 11;
+
+}
+
+.gallery {
+	width: 50%;
+	height: 100%;
+	position: relative;
+
+	z-index: 5;
+}
+
+.image {
+	width: 10vmax;
+	height: 7vmax;
+
+	@for $i from 1 through 10 {
+		$x: (random(100));
+		$y: (random(100));
+		$deg: (random(100) + (random(100) * -1)) * 0.5deg;
+
+		$delay: $i * 1s;
+		$duration: $i * 1s + 3s;
+
+		&[data-index='#{$i}'] {
+			transform: translate(-50% + $x, -50% + $y) rotate($deg);
+		}
+	}
+
+	border: 0.5vmax solid white;
+	box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.4);
+	object-fit: cover;
+}
+
+.text {
+	width: 70%;
+
+	text-align: center;
+	font-size: 1.5vmax;
+	font-family: Darker Grotesque, Darker Grotesque Fallback;
+	color: rgb(0, 50, 90);
+
+	z-index: 10;
+}
+@media (orientation: portrait) {
+	.album{
+		height: 50vmax;
+	}
+	.text {
+		width: 100%;
+	}
+}

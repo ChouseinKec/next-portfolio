@@ -1,0 +1,22 @@
+html {
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+}
+
+body {
+    background: #bce3f2;
+}
+
+.footer {
+    position: absolute;
+    z-index: 999;
+    bottom: 0%;
+}
+
+
+@media (orientation: portrait) {
+    .footer {
+        position: relative;
+        margin-top: -15%;
+    }
+}

@@ -1,0 +1,115 @@
+.gallery {
+	width: 100%;
+	height: 50vh;
+
+	overflow: hidden;
+
+	display: flex;
+	flex-direction: column;
+	gap: 1vw;
+	z-index: 100;
+
+	&:has(.image[href*='mp4']) {
+		.video {
+			&::after,
+			&::before {
+				content: '';
+
+				width: 3vw;
+				height: 4vw;
+
+				position: absolute;
+				top: 50%;
+				left: 50%;
+
+				transform: translate(-50%, -50%);
+			}
+
+			&::before {
+				width: 6vw;
+				height: 6vw;
+				border-radius: 50%;
+
+				border: 3px solid rgba(255, 255, 255, 0.7);
+				z-index: 1;
+			}
+
+			&::after {
+				left: 52%;
+				clip-path: polygon(100% 50%, 0 0, 0 100%);
+				background: rgba(255, 255, 255, 0.7);
+				z-index: 2;
+			}
+		}
+	}
+
+	.image {
+		position: relative;
+		display: block;
+
+		background: rgb(0, 32, 54);
+		&::after {
+			content: '';
+			height: 100%;
+			width: 100%;
+
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+
+			z-index: 10;
+
+			box-shadow: inset 0px 0px 50px 10px rgba(0, 145, 255, 0.5);
+		}
+	}
+
+	.video {
+		width: 100%;
+		height: 70%;
+
+		position: relative;
+
+		.image {
+			width: 100%;
+			height: 100%;
+			flex: 1;
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+		}
+	}
+
+	.images {
+		width: 100%;
+		height: 100px;
+
+		overflow-y: hidden;
+		overflow-x: scroll;
+
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: 0.5vw;
+
+		scrollbar-color: rgba(255, 255, 255, 0.5) transparent;
+		scrollbar-width: thin;
+
+		.image {
+			width: 100%;
+			height: 100%;
+
+			display: block;
+
+			&::after {
+				box-shadow: inset 0px 0px 25px 5px rgba(0, 145, 255, 0.5);
+			}
+
+			img {
+				object-fit: cover;
+			}
+		}
+	}
+}

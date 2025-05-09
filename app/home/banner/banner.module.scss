@@ -1,0 +1,642 @@
+@use '../../../mixins/stars.scss' as stars;
+@use './animations' as *;
+
+.banner {
+	--animation-state: paused;
+
+	height: 100vh;
+	width: 100vw;
+
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) scale(1);
+
+	z-index: 1;
+
+	animation: bannerScroll linear;
+	animation-timeline: scroll(root);
+
+	&::before {
+		content: '';
+		width: 150%;
+		height: 150%;
+		border-radius: 50%;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%) scale(1.2);
+		background: linear-gradient(180deg, #000000 0%, #0f0824 65%);
+	}
+
+	&:hover {
+		--animation-state: running;
+	}
+
+	svg {
+		pointer-events: none;
+	}
+}
+
+.spaceship {
+	width: 115vmax;
+	height: auto;
+
+	position: absolute;
+	top: 50%;
+	left: 50%;
+
+	transform: translate(-50%, 65%) scale(3.7);
+
+	z-index: 20;
+	pointer-events: none;
+
+	&Window {
+		opacity: 0;
+		animation: spaceshipWindowScroll linear;
+		animation-timeline: scroll(root);
+	}
+
+	&Fire {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+	}
+}
+
+.text {
+	--field-width: 15vmax;
+	--field-radius: 1vmax;
+	--field-animation: running;
+
+	--contact-width: 15vmax;
+	--contact-height: 4.5vmax;
+	--contact-radius: 1vmax;
+	--contact-name-opacity: 1;
+	--contact-galaxy-animation: running;
+	--contact-galaxy-opacity: 1;
+	--contact-email-opacity: 0;
+
+	--contact-transition: all 0.5s;
+
+	width: 36vmax;
+	height: 45vmax;
+	padding: 8vmax 5vmax 5vmax 5vmax;
+
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	z-index: 10;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+
+	> span {
+		color: white;
+		font-size: 1.2vmax;
+		font-family: Monomaniac One, Monomaniac One Fallback;
+
+		&:nth-child(2) {
+			padding-top: 3vmax;
+		}
+	}
+
+	&Title {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+
+		font-size: 5vmax;
+		color: white;
+		font-family: 'Monomaniac One', serif;
+		text-align: center;
+
+		line-height: 5vmax;
+		font-weight: 300;
+
+		filter: drop-shadow(3px -5px 1px #354b5b);
+
+		p {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		&Content {
+			overflow: hidden;
+			// padding: 0 25px;
+
+			&:before {
+				content: 'Chousein';
+				display: block;
+				animation: textLoop 5s 5s infinite forwards, textContentLoop 10s 5s infinite forwards;
+				animation-play-state: var(--animation-state);
+			}
+		}
+	}
+
+	&CV {
+		width: var(--field-width);
+		display: flex;
+		flex-direction: column;
+
+		font-family: Darker Grotesque, Darker Grotesque Fallback;
+		transition: transform 0.5s;
+		font-family: 'Monomaniac One', serif;
+
+		&:hover {
+			transform: scale(1.1);
+		}
+
+		&Download {
+			border-radius: var(--field-radius);
+			position: relative;
+			background: conic-gradient(from var(--contact-background-position), rgba(255, 0, 0, 1), rgba(255, 154, 0, 1), rgba(208, 222, 33, 1), rgba(79, 220, 74, 1), rgba(63, 218, 216, 1), rgba(47, 201, 226, 1), rgba(28, 127, 238, 1), rgba(95, 21, 242, 1), rgba(186, 12, 248, 1), rgba(251, 7, 217, 1), rgba(255, 0, 0, 1));
+			animation: contactLoop 3s infinite linear;
+			animation-play-state: var(--animation-state);
+
+			overflow: hidden;
+
+			a {
+				display: block;
+				position: relative;
+
+				border-radius: var(--field-radius);
+				text-decoration: none;
+				width: 100%;
+				height: 100%;
+				padding: 1.1vmax;
+
+				background-color: transparent;
+				text-align: center;
+				font-size: 1.5vmax;
+				color: white;
+
+				outline: none !important;
+				border: none !important;
+				z-index: 5;
+			}
+
+			&::before {
+				content: '';
+				display: block;
+
+				width: 99%;
+				height: 98%;
+
+				position: absolute;
+				top: 50%;
+				left: 50%;
+
+				transform: translate(-50%, -50%);
+
+				background: rgb(17, 17, 17);
+				border-radius: var(--field-radius);
+				z-index: 0;
+			}
+		}
+	}
+
+	&Contact {
+		$offset: 0.2vmax;
+
+		height: var(--contact-height);
+		width: var(--contact-width);
+
+		position: relative;
+		border-radius: var(--contact-radius);
+
+		border: none;
+		outline: none;
+		box-shadow: inset 0px 3px 0px rgb(35, 35, 35);
+
+		background: rgb(19, 17, 21);
+
+		font-size: 1.6vmax;
+		font-family: 'Monomaniac One', serif;
+		color: rgba(255, 255, 255, 1);
+
+		transition: var(--contact-transition);
+		cursor: pointer;
+		&::before {
+			content: '';
+			display: block;
+
+			height: var(--contact-height);
+			width: var(--contact-width);
+
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+
+			background: conic-gradient(from var(--contact-background-position), rgba(255, 255, 255, 0.5) 1%, transparent 10%);
+			border-radius: var(--contact-radius);
+
+			animation: contactLoop 3s infinite linear;
+			animation-play-state: var(--animation-state);
+			transition: var(--contact-transition);
+		}
+
+		&::after {
+			content: '';
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			height: calc(var(--contact-height) - $offset);
+			width: calc(var(--contact-width) - $offset);
+
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+
+			border-radius: var(--contact-radius);
+			background: rgb(19, 17, 21);
+
+			transition: var(--contact-transition);
+		}
+
+		&:hover {
+			--contact-galaxy-animation: paused;
+			--contact-name-opacity: 0;
+			--contact-galaxy-opacity: 0;
+			--contact-email-opacity: 1;
+
+			transform: scale(1.1);
+		}
+
+		&Name {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			z-index: 30;
+			opacity: var(--contact-name-opacity);
+			transition: var(--contact-transition);
+		}
+
+		&Galaxy {
+			display: block;
+
+			height: calc(var(--contact-height) - $offset);
+			width: calc(var(--contact-width) - $offset);
+			overflow: hidden;
+
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			z-index: 10;
+
+			border-radius: var(--contact-radius);
+			background-color: black;
+			transition: var(--contact-transition);
+
+			opacity: var(--contact-galaxy-opacity);
+
+			&::before {
+				content: ' ';
+				display: block;
+				position: absolute;
+				left: 50%;
+				top: 50%;
+
+				transform: rotate(0deg) translate(-25px, -50px);
+
+				box-shadow: stars.stars(50, 150, 0, 0.2);
+
+				animation: contactStarsLoop 10s infinite linear;
+				animation-play-state: var(--contact-galaxy-animation);
+				transition: var(--contact-transition);
+			}
+
+			&::after {
+				content: '';
+				$height: calc(var(--contact-height) / 1.2);
+
+				display: block;
+
+				width: $height;
+				height: $height;
+
+				position: absolute;
+				bottom: calc($height * -1.1);
+				right: calc($height * -0.8);
+
+				transform: translate(-50%, -50%);
+				background: rgb(129, 188, 255);
+				border-radius: 50%;
+
+				box-shadow: calc($height * -0.1) calc($height * -0.01) 45px 7px rgb(38, 95, 159), inset calc($height * 0.05) calc($height * 0.05) 15px 1px rgb(30, 95, 170);
+				transition: var(--contact-transition);
+			}
+		}
+
+		&Email {
+			width: 100%;
+
+			position: absolute;
+			top: 50%;
+			left: 50%;
+
+			transform: translate(-50%, -50%);
+			z-index: 100;
+
+			font-size: 1.2vmax;
+			color: white;
+			font-family: Darker Grotesque, Darker Grotesque Fallback;
+
+			opacity: var(--contact-email-opacity);
+			transition: var(--contact-transition);
+		}
+	}
+}
+
+.servers {
+	position: absolute;
+	top: 0;
+	right: 0;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	align-items: flex-start;
+	z-index: 5;
+
+	.server {
+		height: auto;
+		width: 30vmax;
+
+		margin-right: -17vmax;
+		margin-top: 2vmax;
+		position: relative;
+		transform: scale(0.8, 0.925);
+		z-index: 2;
+
+		&:nth-child(4) {
+			margin-right: -9vmax;
+		}
+
+		animation: brightnessLoop $BOUNCE-DURATION 1s linear infinite;
+		animation-play-state: var(--animation-state);
+		.serverLight {
+			opacity: 0.5;
+		}
+
+		$timingFunctions: linear cubic-bezier(0, 0.78, 1, 0.74) cubic-bezier(0.1, 1.2, 0.9, 0.02);
+		@for $i from 1 through 6 {
+			.serverLed#{$i} {
+				animation-name: serverLedLoop;
+				animation-iteration-count: infinite;
+				animation-direction: alternate;
+				animation-duration: random(10) * 0.1s;
+				animation-timing-function: nth($timingFunctions, random(3));
+
+				animation-play-state: var(--animation-state);
+			}
+		}
+	}
+}
+
+.arc {
+	height: 55%;
+	width: auto;
+
+	position: absolute;
+	bottom: 0%;
+	left: 50.5%;
+	transform: translateX(-50%) translateY(-50%) scaleX(0.92) scaleY(1.03);
+
+	margin-bottom: -20%;
+
+	animation: brightnessLoop $BOUNCE-DURATION 1s linear infinite;
+	animation-play-state: var(--animation-state);
+
+	z-index: 10;
+
+	&Back {
+		z-index: 5;
+	}
+
+	&Front {
+		z-index: 15;
+	}
+
+	&Cables {
+		stroke: black;
+	}
+}
+
+.cables {
+	height: auto;
+	width: 60%;
+
+	position: absolute;
+	bottom: 3vw;
+	left: 41%;
+}
+
+.floor {
+	width: 100vw;
+	height: auto;
+
+	position: absolute;
+	bottom: 0;
+	left: 0;
+
+	path {
+		stroke: rgba(61, 245, 255, 0.1);
+		animation: floorLoop 3s linear infinite;
+		animation-play-state: var(--animation-state);
+	}
+}
+
+.astronaut {
+	height: 100%;
+	width: 100%;
+
+	position: absolute;
+	bottom: -45%;
+	left: 49%;
+	transform: translate(-50%, -50%) scale(0.85) rotate(1deg);
+	z-index: 10;
+
+	animation: astronautIdle 2s linear infinite alternate, brightnessLoop $BOUNCE-DURATION 1s linear infinite;
+	animation-play-state: var(--animation-state);
+
+	&Hose {
+		transform: translateX(-9%) translateY(-18%) scale(1.2);
+	}
+
+	.astronautFloating {
+		display: none;
+	}
+
+	.astronautGreeting {
+		display: block;
+		animation: astronautGreet 2s linear infinite alternate;
+		animation-play-state: var(--animation-state);
+	}
+
+	.astronautRightLeg {
+		animation: astronautLeg 2.5s linear infinite alternate;
+		animation-play-state: var(--animation-state);
+	}
+
+	.astronautLeftLeg {
+		animation: astronautLeg 2.5s 1.5s linear infinite alternate;
+		animation-play-state: var(--animation-state);
+	}
+}
+
+.cat {
+	height: 9vmax;
+	width: auto;
+
+	position: absolute;
+	top: 60%;
+	left: 87%;
+	transform: translate(-50%, -50%) scale(0.5);
+	z-index: 10;
+
+	animation: brightnessLoop $BOUNCE-DURATION 1s linear infinite;
+	animation-play-state: var(--animation-state);
+
+	> * {
+		filter: brightness(0.5);
+	}
+
+	&Z1 {
+		animation: catSleepLoop 4s 0s infinite linear;
+		animation-play-state: var(--animation-state);
+	}
+
+	&Z2 {
+		animation: catSleepLoop 4s 2s infinite linear;
+		animation-play-state: var(--animation-state);
+	}
+
+	&Z3 {
+		animation: catSleepLoop 4s 5s infinite linear;
+		animation-play-state: var(--animation-state);
+	}
+}
+
+.links {
+	position: absolute;
+	bottom: 2%;
+	right: 1%;
+	z-index: 10;
+
+	animation: githubScroll linear;
+	animation-timeline: scroll(root);
+
+	& > * {
+		animation: breathLoop 5s 1s linear infinite;
+		animation-play-state: var(--animation-state);
+	}
+
+	.github {
+		display: block;
+		width: 40px;
+		height: 40px;
+
+		background-color: black;
+		border-radius: 50%;
+
+		transition: all 0.5s;
+
+		&:hover {
+			transform: scale(1.1);
+		}
+
+		&::before {
+			content: '';
+			z-index: 0;
+			width: 100%;
+			height: 100%;
+
+			mask-image: url('/logos/github.png');
+			mask-position: center;
+			mask-size: contain;
+			mask-repeat: no-repeat;
+			background-color: white;
+
+			position: absolute;
+			top: 48%;
+			left: 50%;
+
+			transform: translate(-50%, -50%);
+		}
+	}
+}
+
+@media (orientation: portrait) {
+	.cat {
+		top: 78%;
+	}
+
+	.spaceship {
+		width: 65vmax;
+		height: auto;
+		transform: translate(-50%, 285%) scale(10.5);
+	}
+
+	.servers {
+		top: 50%;
+
+		.server:nth-child(3) {
+			display: none;
+		}
+	}
+
+	.text {
+		--field-width: 20vmax;
+		--field-radius: 1vmax;
+
+		--contact-width: 20vmax;
+		--contact-height: 4.5vmax;
+		--contact-radius: 1vmax;
+
+		width: 45vmax;
+		height: 50vmax;
+		top: 4%;
+		left: 50%;
+		transform: translate(-50%, 0%);
+
+		> span {
+			font-size: 2vmax;
+		}
+
+		&Title {
+			width: 100%;
+			font-size: 7vmax;
+			line-height: 7vmax;
+		}
+	}
+
+	.astronaut {
+		height: 55%;
+		width: 55%;
+		// top: 65%;
+		bottom: -25%;
+		&Hose {
+			display: none;
+		}
+	}
+
+	.arc {
+		height: 30%;
+		transform: translateX(-50%) translateY(-15%) scaleX(0.92) scaleY(1.03);
+	}
+
+	.cables {
+		width: 80%;
+		bottom: 11vmax;
+		left: 25%;
+	}
+}

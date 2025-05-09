@@ -1,0 +1,120 @@
+@use './animations' as *;
+
+.banner {
+	height: 100vh;
+	width: 100vw;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	position: relative;
+
+	z-index: 0;
+	font-family: Monomaniac One, serif;
+	color: white;
+
+	scroll-snap-align: center;
+
+	&Title,
+	&Subtitle {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+
+		transform: translate(-50%, -50%);
+		filter: drop-shadow(5px 5px 0px rgba(0, 0, 0, 0.2));
+		pointer-events: none;
+	}
+
+	&Title {
+		font-size: 15vw;
+		letter-spacing: 3vw;
+	}
+
+	&Subtitle {
+		top: 80%;
+		margin-top: -3vmax;
+		font-size: 5vmax;
+	}
+
+	&Cloud1,
+	&Cloud2,
+	&Cloud3,
+	&Cloud4,
+	&Cloud5,
+	&Cloud6 {
+		position: absolute;
+
+		top: 50%;
+		left: 50%;
+
+		transform: translate(-50%, -50%);
+
+		filter: blur(10px) opacity(0.9);
+	}
+
+	&Cloud1 {
+		top: 15%;
+		left: 35%;
+		animation: cloud__a-loop 5s infinite linear forwards;
+	}
+
+	&Cloud2 {
+		top: 20%;
+		left: 90%;
+		animation: cloud__b-loop 3s 1s infinite linear forwards;
+	}
+
+	&Cloud3 {
+		top: 55%;
+		left: 80%;
+		opacity: 0.9;
+
+		animation: cloud__b-loop 3s infinite linear forwards;
+	}
+
+	&Cloud4 {
+		top: 60%;
+		left: 30%;
+		animation: cloud__a-loop 6s infinite linear forwards;
+	}
+
+	&Cloud5 {
+		top: 80%;
+		left: 100%;
+		width: 800px;
+		animation: cloud__b-loop 15s infinite linear forwards;
+
+		opacity: 0.9;
+	}
+
+	&Cloud6 {
+		top: 40%;
+		left: 60%;
+		width: 500px;
+		animation: cloud__b-loop 15s infinite linear forwards;
+
+		z-index: 0;
+	}
+}
+
+@media (orientation: portrait) {
+	.banner {
+		&Title,
+		&Subtitle {
+			top: 25%;
+		}
+
+		&Title {
+			font-size: 15vw;
+			letter-spacing: 3vw;
+		}
+
+		&Subtitle {
+			top: 40%;
+			margin-top: -3vmax;
+			font-size: 5vmax;
+		}
+	}
+}

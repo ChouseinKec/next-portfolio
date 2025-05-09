@@ -1,0 +1,39 @@
+.navbar {
+	width: 100%;
+	height: 4vmax;
+
+	display: flex;
+	justify-content: space-between;
+
+	position: absolute;
+	top: 0;
+	z-index: 900;
+
+	padding-top: 1vmax;
+	padding-right: 1vmax;
+
+	.logo {
+		width: 4vmax;
+		svg {
+			height: 100%;
+			width: 100%;
+		}
+	}
+
+	.links {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		gap: 1vmax;
+
+		color: white;
+		font-weight: 400;
+		font-size: 1.8vmax;
+		a {
+			font-family: 'Monomaniac One', serif;
+			color: white;
+			text-decoration: none;
+		}
+	}
+}

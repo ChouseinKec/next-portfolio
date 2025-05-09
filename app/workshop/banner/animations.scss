@@ -1,0 +1,113 @@
+// CLOUD
+@keyframes cloudLoop {
+	from {
+		opacity: 1;
+		transform: translateX(-100%);
+	}
+
+	90% {
+		opacity: 1;
+	}
+
+	to {
+		opacity: 0;
+		transform: translateX(75%);
+	}
+}
+
+// HOVER
+@keyframes hoverLoop {
+	from {
+		opacity: 0;
+	}
+
+	10% {
+		opacity: 0;
+	}
+
+	15% {
+		opacity: 1;
+	}
+
+	20% {
+		opacity: 1;
+	}
+
+	25% {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 0;
+	}
+}
+
+// PRINTER
+@keyframes printerAxisLoop {
+	@for $i from 1 through 30 {
+		$random: random(100) * 0.1;
+		#{($i) * 3%} {
+			transform: translateY($random + 85px);
+		}
+	}
+}
+@keyframes printerExtruderLoop {
+	@for $i from 1 through 30 {
+		$random: random(100) * 0.01;
+		#{($i) * 3%} {
+			transform: translateX($random * 1%);
+		}
+	}
+}
+
+// CNC
+@keyframes cncSpindleLoop {
+	@for $i from 1 through 30 {
+		$random: random(100) * 0.1;
+		#{($i) * 3%} {
+			transform: translateY($random);
+		}
+	}
+}
+@keyframes cncToolsLoop {
+	@for $i from 1 through 30 {
+		$random: random(100) * 0.01;
+		#{($i) * 3%} {
+			transform: translateX($random * 1%);
+		}
+	}
+}
+
+// DELL
+@keyframes dellLedLoop {
+	0% {
+		opacity: 1;
+	}
+
+	5% {
+		opacity: 0;
+	}
+
+	10% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+// LINKS
+@keyframes linkLoop {
+	0% {
+		transform: translateY(0%);
+	}
+
+	50% {
+		transform: translateY(30%);
+	}
+
+	100% {
+		transform: translateY(0%);
+	}
+}

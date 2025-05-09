@@ -1,0 +1,409 @@
+@use './animations' as *;
+@use './variables' as *;
+@use '../../../mixins/stars.scss' as stars;
+
+.galaxy {
+	width: 100vw;
+	height: 150vh;
+	overflow: hidden;
+
+	position: relative;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	z-index: 1;
+
+	--animation-state: paused;
+
+	&:hover {
+		--animation-state: running;
+	}
+
+	@if ($GALAXY-LIGHT) {
+		&::before {
+			content: '';
+
+			height: 50vmax;
+			width: auto;
+			aspect-ratio: 1;
+
+			display: block;
+
+			position: absolute;
+			top: 50%;
+			left: 50%;
+
+			transform: translate(-50%, -50%);
+
+			border-radius: 50%;
+			background: conic-gradient(#a009e1, #45ff73, #e263ff, #02ff7c, #fffc63);
+
+			filter: opacity($GALAXY-LIGHT-OPACITY) blur(75px);
+		}
+	}
+
+	@if ($GALAXY-STARS) {
+		&::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			opacity: 0.4;
+
+			box-shadow: stars.stars(500, 1500, 0, 0.05);
+		}
+	}
+}
+
+.orbit {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) rotate(-90deg) scale(1);
+	transform-style: preserve-3d;
+	border-radius: 50%;
+
+	z-index: $orbit_zindex;
+
+	width: calc($orbit_size * 1vmax);
+	height: calc($orbit_size * 1vmax);
+	opacity: 1;
+
+	@if ($ANIMATE) {
+		animation-name: orbitRotate;
+		animation-duration: calc($orbit_duration * 1s);
+		animation-delay: calc($orbit_delay * 1s);
+		animation-timing-function: linear, linear;
+		animation-iteration-count: infinite;
+		animation-fill-mode: forwards;
+		animation-play-state: var(--animation-state);
+	}
+
+	&:not([style*='--orbit-index:0'])::after {
+		content: '';
+		width: 100%;
+		height: 100%;
+
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+
+		display: block;
+		border-radius: 50%;
+
+		border: 1px solid rgba(255, 255, 255, 0.15);
+	}
+
+	&:hover {
+		&::after {
+			border: 2px solid rgba(255, 255, 255, 0.2);
+			box-shadow: inset 0px 0px 50px rgba(255, 255, 255, 0.1), 0px 0px 50px rgba(255, 255, 255, 0.1);
+		}
+		--animation-state: paused;
+		animation-play-state: var(--animation-state);
+	}
+
+	&:nth-child(1) {
+		.planet {
+			width: $CORE-SIZE;
+			height: $CORE-SIZE;
+			margin: 0;
+			transform: translate(-50%, -50%);
+
+			background: #5e49c6;
+			border-radius: 50%;
+
+			&[style*='--planet-index'] {
+				transform: translate(-50%, -50%);
+			}
+
+			&::before {
+				background: radial-gradient(circle at 50 50, #b3a7c0, #633f89 100px);
+
+				box-shadow: inset 0 0 5px #4b447940, inset 0 0 10px #ab49c648;
+				filter: blur(5px);
+
+				@if ($ANIMATE) {
+					animation-name: coreLight;
+					animation-duration: 3s;
+					animation-timing-function: linear;
+					animation-iteration-count: infinite;
+					animation-direction: alternate;
+				}
+			}
+
+			&Image img {
+				opacity: 0.5;
+			}
+
+			.textCircular {
+				&Letter[style*='--index'] {
+					transform: translate(-50%, -50%) rotate(calc(15deg * var(--index))) translateY(calc($TEXT-RADIUS * -1.4ch));
+				}
+			}
+		}
+	}
+}
+
+.planet {
+	width: $PLANET-SIZE;
+	height: $PLANET-SIZE;
+	margin: calc($PLANET-SIZE / 2 * -1);
+	border-radius: 50%;
+
+	position: absolute;
+	top: 50%;
+	left: 50%;
+
+	z-index: calc($planet_index + 1);
+	cursor: pointer;
+	&[style*='--planet-index'] {
+		transform: rotate(calc($planet_angle * $planet_index * 1deg)) translate(calc(($orbit_size * 1vmax) / 2)) rotate(calc($planet_angle * $planet_index * -1deg));
+	}
+
+	&::before,
+	&::after {
+		content: '';
+
+		width: 100%;
+		height: 100%;
+
+		position: absolute;
+		display: block;
+
+		box-sizing: border-box;
+		border-radius: 50%;
+
+		transform: rotate(calc($planet_angle * $planet_index * 1deg));
+	}
+
+	&::before {
+		$dist: calc(100% - (15 * $orbit_index) * 1%);
+		background: radial-gradient($dist 123.32% at 11.22% 66.71%, #2a1f36 0%, #0d1326 100%);
+		box-shadow: inset 4px 0px 5px #ab49c630, inset 2px 2px 4px #5149c63e;
+		z-index: 10;
+	}
+
+	&::after {
+		$x: calc((10 * $orbit_index) * -1px);
+		box-shadow: inset $x 0px 10px #00000030;
+		z-index: 11;
+	}
+
+	&:hover {
+		.planetDetails,
+		.coreDetails {
+			opacity: 1;
+			pointer-events: all;
+			width: var(--details-width);
+		}
+
+		&::after {
+			box-shadow: 0px 0px 15px #bd8dff86;
+		}
+	}
+
+	&Image img {
+		width: 65%;
+		height: 65%;
+
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%) rotate(90deg);
+
+		object-fit: contain;
+		z-index: 10;
+
+		@if ($ANIMATE) {
+			animation-name: imageRotate;
+			animation-duration: calc($orbit_duration * 1s);
+			animation-delay: calc($orbit_delay * 1s);
+			animation-timing-function: linear;
+			animation-iteration-count: infinite;
+			animation-play-state: var(--animation-state);
+		}
+	}
+
+	&Details {
+		width: 10px;
+		overflow: hidden;
+		opacity: 0;
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%) rotate(90deg) translate(calc(50% * $details_direction), -65%) scaleX($details_direction);
+		transition: all 0.5s linear;
+		pointer-events: none;
+		@if ($ANIMATE) {
+			animation-duration: calc($orbit_duration * 1s);
+			animation-delay: calc($orbit_delay * 1s);
+			animation-timing-function: linear;
+			animation-iteration-count: infinite;
+			animation-play-state: var(--animation-state);
+		}
+
+		&::before {
+			content: '';
+			width: $details_arrow;
+			height: $details_arrow;
+
+			position: absolute;
+			top: 0;
+			left: 0;
+			transform: translate(calc($details_arrow / 6), calc(($details_arrow / 100) * 20)) rotate(-45deg);
+			border-top: 2px dashed rgba(234, 171, 255, 0.2);
+		}
+
+		> * {
+			width: calc(var(--details-width) - ($details_arrow / 1.5));
+			height: 100%;
+
+			transform: translate($details_arrow / 1.5) scaleX($details_direction);
+
+			background: radial-gradient(circle, rgba(255, 0, 195, 0.03), rgba(255, 255, 255, 0.035), rgba(255, 0, 195, 0.035));
+			border-top: 2px dashed rgba(234, 171, 255, 0.2);
+
+			@if ($ANIMATE) {
+				animation-duration: calc($orbit_duration * 1s);
+				animation-delay: calc($orbit_delay * 1s);
+				animation-timing-function: linear;
+				animation-iteration-count: infinite;
+				animation-play-state: var(--animation-state);
+			}
+		}
+	}
+}
+
+.list {
+	padding: 1.2vmax;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	gap: 1vmax;
+
+	color: rgba(255, 255, 255, 0.5);
+	list-style: none;
+	font-family: monospace;
+	font-size: 1vmax;
+
+	&Item {
+		width: 100%;
+
+		display: grid;
+		grid-template-columns: auto auto auto;
+		gap: 0.5vmax;
+
+		& > *:nth-child(1) {
+			font-weight: 900;
+			text-wrap: nowrap;
+		}
+
+		&::after {
+			overflow: hidden;
+			content: '---------------------------';
+			white-space: nowrap;
+			display: inline;
+			grid-column: 2;
+			grid-row: 1;
+		}
+	}
+}
+
+.rating {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+
+	&Star {
+		$color--default: silver;
+		$color--active: gold;
+		$color--half: linear-gradient(-90deg, $color--default 0%, $color--default 50%, $color--active 50%, $color--active 100%);
+		display: inline-block;
+		overflow: hidden;
+		margin-top: -0.5vmax;
+
+		font-size: 1.5vmax;
+		font-weight: normal;
+
+		&[data-state='none'] {
+			&::before {
+				content: '\2605';
+				color: $color--default;
+			}
+		}
+
+		&[data-state='full'] {
+			&::before {
+				content: '\2605';
+				color: $color--active;
+			}
+		}
+
+		&[data-state='half'] {
+			&::before {
+				content: '\2605';
+				color: transparent;
+				background: $color--half;
+				background-clip: text;
+			}
+		}
+	}
+}
+
+.textCircular {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	z-index: 11;
+	transform: rotate(calc($text_angle * 1deg + 90deg));
+	font-family: Darker Grotesque, Darker Grotesque Fallback;
+	cursor: default;
+	@if ($ANIMATE) {
+		animation-name: textRotate;
+		animation-duration: calc($orbit_duration * 1s);
+		animation-delay: calc($orbit_delay * 1s);
+		animation-timing-function: linear;
+		animation-iteration-count: infinite;
+		animation-play-state: var(--animation-state);
+	}
+
+	&Letter[style*='--index'] {
+		font-size: 0.9vmax;
+		font-weight: 900;
+		color: rgba(255, 255, 255, 0.5);
+
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%) rotate(calc(15deg * var(--index))) translateY(calc($TEXT-RADIUS * -1ch));
+	}
+}
+
+@include detailsAnimation();
+
+@media (orientation: portrait) {
+	.galaxy {
+		width: 100vw;
+		height: 100vh;
+
+		@if ($GALAXY-LIGHT) {
+			&::before {
+				height: 40vmax;
+				filter: opacity($GALAXY-LIGHT-OPACITY) blur(50px);
+			}
+		}
+	}
+
+	.planet {
+		* {
+			--details-width: 21vmax;
+		}
+	}
+}

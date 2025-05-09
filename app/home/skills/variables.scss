@@ -1,0 +1,56 @@
+/*
+This section is for the VARIABLES
+you can change them for desired outcome	
+*/
+// $ANIMATE: true;
+$ANIMATE: true;
+
+$GALAXY-LIGHT: true;
+$GALAXY-STARS: true;
+$GALAXY-LIGHT-OPACITY: 0.1;
+
+$ORBIT-DURATION: 10; // s
+// $ORBIT-SIZE: 13; // vmax
+$ORBIT-SIZE: 13; // vmax
+
+$ORBIT-DELAY: 0.5; // s
+
+$PLANET-SIZE: 4.5vmax;
+$CORE-SIZE: 5.5vmax;
+
+$TEXT-ROTATE: -5;
+$TEXT-RADIUS: 7;
+
+/*
+This section is for the CALCULATIONS
+Most of the time you will not need to change this
+It is used internally in different places.
+Changes those can lead to unexpected behaviour.
+*/
+
+$galaxy__orbits: var(--galaxy-orbits);
+
+$orbit_planets: var(--orbit-planets);
+$orbit_index: var(--orbit-index);
+$orbit_zindex: calc($galaxy__orbits - $orbit_index);
+
+$orbit_duration: calc($ORBIT-DURATION * $orbit_index);
+$orbit_size: calc($ORBIT-SIZE * $orbit_index);
+
+$orbit_delay: calc($ORBIT-DELAY * $orbit_index);
+
+$planet_index: var(--planet-index);
+$planet_angle: calc(360 / $orbit_planets);
+
+$text_total: var(--text-total);
+$text_angle: calc($TEXT-ROTATE * $text_total);
+
+$details_direction: var(--details-direction);
+$details_arrow: 6.5vmax;
+@property --details-width {
+	syntax: '<length>';
+	inherits: false;
+	initial-value: 26vmax;
+}
+
+

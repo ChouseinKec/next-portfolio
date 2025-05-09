@@ -1,0 +1,553 @@
+.modal {
+	width: 100vw;
+	height: 100vh;
+
+	position: relative;
+	z-index: 20;
+	transform: scale(1);
+
+
+	&::before {
+		content: '';
+		width: 90%;
+		height: 90%;
+
+		display: block;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+
+		backdrop-filter: blur(3px);
+	}
+
+	&::after {
+		content: '';
+		width: 100%;
+		height: 100%;
+
+		display: block;
+		position: fixed;
+		top: 50%;
+		left: 50.5%;
+		transform: translate(-50%, -50%);
+
+		background-image: url('/workshop/tablet.svg');
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+	}
+
+	&__hands {
+		// display: none;
+		width: 100%;
+		height: 100%;
+		z-index: 100;
+		position: relative;
+
+		pointer-events: none;
+
+		&::before {
+			content: '';
+			width: 16.3vw;
+			height: 22.8vw;
+
+			display: block;
+			position: absolute;
+
+			bottom: 2%;
+			left: -8.1%;
+
+			transform: scaleX(-1);
+
+			background-image: url('/workshop/Hand.svg');
+			background-position: center;
+			background-size: cover;
+			background-repeat: no-repeat;
+		}
+
+		&::after {
+			content: '';
+			width: 16.3vw;
+			height: 22.8vw;
+
+			display: block;
+			position: absolute;
+
+			bottom: 2%;
+			right: -8.1%;
+
+			background-image: url('/workshop/hand.svg');
+			background-position: center;
+			background-size: cover;
+			background-repeat: no-repeat;
+		}
+	}
+
+	&__button {
+		width: 10%;
+		height: 20%;
+		display: block;
+
+		position: absolute;
+		top: 3vw;
+		left: 0vw;
+
+		z-index: 100;
+	}
+}
+
+.sections {
+	height: 40vw;
+	width: 75vw;
+	overflow: hidden;
+
+	position: absolute;
+	top: 51.5%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	z-index: 30;
+
+	> * {
+		width: 100%;
+		height: 100%;
+	}
+
+	.section {
+		position: relative;
+		overflow: hidden scroll;
+		scrollbar-color: rgba(255, 255, 255, 0.5) transparent;
+		scrollbar-width: thin;
+
+		outline: none !important;
+
+		.container {
+			width: 100%;
+			height: 100%;
+
+			position: relative;
+
+			> .title {
+				color: white;
+				text-align: center;
+				font-size: 4vw;
+			}
+		}
+
+		// FIXIT - XPLORER
+		&[data-section='robotics'] {
+			.svg {
+				width: 35%;
+				height: auto;
+				position: absolute;
+				top: 75%;
+				left: 50%;
+
+				z-index: 100;
+
+				transform: translate(-50%, -50%);
+				filter: opacity(0.9);
+			}
+
+			[data-container='FixIT'] {
+				.window {
+					&[data-window='Gallery'] {
+						top: 15%;
+
+						&::before {
+							height: 65%;
+							width: 150%;
+						}
+					}
+
+					&[data-window='Description'] {
+						top: 15%;
+						right: 2%;
+
+						&::before {
+							height: 80%;
+							width: 150%;
+						}
+					}
+
+					&[data-window='Actuators'] {
+						top: 100%;
+						left: 0%;
+
+						&::before {
+							height: 10%;
+							width: 145%;
+						}
+					}
+
+					&[data-window='Cameras'] {
+						top: 110%;
+						left: 35%;
+
+						&::before {
+							height: 20%;
+							width: 50%;
+						}
+					}
+
+					&[data-window='MCU'] {
+						top: 100%;
+						right: 2%;
+
+						&::before {
+							height: 30%;
+							width: 120%;
+						}
+					}
+				}
+			}
+
+			[data-container='Controller'] {
+				margin-top: 40%;
+
+				.window {
+					&[data-window='Communication'] {
+						top: 15%;
+						right: 2%;
+
+						&::before {
+							width: 130%;
+							height: 70%;
+						}
+					}
+
+					&[data-window='Monitor'] {
+						top: 15%;
+						left: 0%;
+
+						&::before {
+							width: 180%;
+							height: 70%;
+						}
+					}
+
+					&[data-window='Control'] {
+						width: 98%;
+						top: 110%;
+						left: 0%;
+						&::before {
+							height: 50%;
+							width: 50%;
+						}
+					}
+				}
+			}
+
+			[data-container='XPlorer'] {
+				margin-top: 30%;
+				.svg {
+					width: 25%;
+					top: 50%;
+				}
+
+				.window {
+					&[data-window='Gallery'] {
+						top: 15%;
+
+						&::before {
+							height: 58%;
+							width: 150%;
+						}
+					}
+
+					&[data-window='Description'] {
+						top: 15%;
+						right: 2%;
+
+						&::before {
+							height: 60%;
+							width: 150%;
+						}
+					}
+
+					&[data-window='Actuators'] {
+						top: 100%;
+						left: 0%;
+
+						&::before {
+							width: 145%;
+							height: 55%;
+						}
+					}
+
+					&[data-window='MCU'] {
+						top: 85%;
+						right: 2%;
+
+						&::before {
+							width: 130%;
+							height: 15%;
+						}
+					}
+				}
+			}
+
+			[data-container='Case'] {
+				margin-top: 5%;
+				.svg {
+					width: 30%;
+					top: 50%;
+					left: 45%;
+				}
+
+				.window {
+					&[data-window='Communication'] {
+						top: 50%;
+						right: 2%;
+
+						&::before {
+							width: 125%;
+							height: 50%;
+						}
+					}
+
+					&[data-window='Monitor'] {
+						top: 90%;
+						left: 0%;
+
+						&::before {
+							width: 180%;
+							height: 15%;
+						}
+					}
+
+					&[data-window='Control'] {
+						width: 50%;
+						left: unset;
+						top: 120%;
+						right: 18%;
+
+						&::before {
+							height: 90%;
+							width: 50%;
+						}
+					}
+				}
+			}
+		}
+
+		// CNC -3D
+		&[data-section='prototype'] {
+			.svg {
+				width: 35%;
+				height: auto;
+				position: absolute;
+				top: 60%;
+				left: 50%;
+
+				z-index: 100;
+
+				transform: translate(-50%, -50%);
+				filter: opacity(0.9);
+			}
+
+			[data-container='3D'] {
+				.svg {
+					width: 30%;
+				}
+
+				.window {
+					&[data-window='Gallery'] {
+						right: 2%;
+
+						&::before {
+							height: 35%;
+						}
+					}
+
+					&[data-window='Description'] {
+						left: 0%;
+
+						&::before {
+							height: 30%;
+						}
+					}
+				}
+			}
+
+			.window {
+				.text {
+					max-height: 60vh;
+				}
+				&[data-window='Gallery'] {
+					top: 20%;
+					&::before {
+						width: 140%;
+						height: 58%;
+					}
+				}
+
+				&[data-window='Description'] {
+					top: 20%;
+					right: 2%;
+
+					&::before {
+						width: 150%;
+						height: 60%;
+					}
+				}
+			}
+		}
+
+		// Unraid
+		&[data-section='production'] {
+			[data-container='Unraid'] {
+				z-index: 10;
+				.svg {
+					width: 35%;
+					height: auto;
+					position: absolute;
+					top: 20%;
+					left: 20%;
+
+					z-index: 100;
+
+					transform: translate(-50%, -50%);
+					filter: opacity(0.9);
+				}
+
+				.window {
+					width: 45%;
+					.text {
+						max-height: 60vh;
+					}
+
+					&[data-window='Description'] {
+						top: 20%;
+						right: 2%;
+
+						&::before {
+							width: 135%;
+							height: 60%;
+						}
+					}
+
+					&[data-window='Applications'] {
+						top: 50%;
+						left: 2%;
+
+						&::before {
+							width: 50%;
+							height: 30%;
+						}
+					}
+				}
+			}
+
+			[data-container='Solar'] {
+				margin-top: -10%;
+
+				.title {
+					display: none;
+				}
+
+				.svg {
+					width: 22%;
+					height: auto;
+					position: absolute;
+					top: -10%;
+					right: 10%;
+
+					z-index: 100;
+
+					filter: opacity(0.9);
+				}
+
+				.window {
+					width: 60%;
+					.text {
+						max-height: 60vh;
+					}
+
+					&[data-window='Description'] {
+						top: 35%;
+						left: 0%;
+
+						&::before {
+							width: 115%;
+							height: 60%;
+						}
+					}
+				}
+			}
+		}
+
+		// Haos
+		&[data-section='haos'] {
+			[data-container='Home Assistant'] {
+				.window {
+					width: 80%;
+
+					&[data-window='Description'] {
+						top: 120%;
+						left: 10%;
+
+						&::before {
+							width: 100%;
+							height: 60%;
+						}
+					}
+				}
+			}
+		}
+
+		// Figma,Blender,OnShape
+		&[data-section='design'] {
+			[data-container='Design'] {
+				.window {
+					&[data-window='Gallery'] {
+						top: 15%;
+						left: 34%;
+					}
+
+					&[data-window='Blender'] {
+						top: 25%;
+						left: 0%;
+
+						&::before {
+							width: 112%;
+						}
+					}
+
+					&[data-window='Onshape'] {
+						top: 25%;
+						right: 2%;
+
+						&::before {
+							width: 112%;
+						}
+					}
+
+					&[data-window='Figma'] {
+						top: 90%;
+						left: 35%;
+
+						&::before {
+							height: 18%;
+						}
+					}
+				}
+			}
+		}
+
+		// 3D Modelling
+		&[data-section='programming'] {
+			[data-container='Programming'] {
+				.window {
+					&[data-window='Description'] {
+						width: 95%;
+
+						top: 15%;
+						left: 2.5%;
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,197 @@
+@use './variables' as *;
+
+@keyframes orbitRotate {
+	to {
+		transform: translate(-50%, -50%) rotate(270deg);
+	}
+}
+
+@keyframes imageRotate {
+	to {
+		transform: translate(-50%, -50%) rotate(-360deg + 90deg);
+	}
+}
+
+@keyframes textRotate {
+	from {
+		transform: rotate(calc($text_angle * 1deg + 90deg)) rotateZ(0deg);
+	}
+	to {
+		transform: rotate(calc($text_angle * 1deg + 90deg)) rotateZ(-360deg);
+	}
+}
+
+@keyframes coreLight {
+	from {
+		opacity: 1;
+	}
+
+	to {
+		opacity: 0.5;
+	}
+}
+
+// Generate description animation
+$orbts: 2, 4;
+@function detailsTransform($degree, $direction: 1) {
+	@return translate(-50%, -50%) rotate(calc($degree * -1deg) + 90deg) translate(calc(50% * $details_direction * $direction), -65%) scaleX(calc($details_direction * $direction));
+}
+
+@function detailsTextsTransform($direction: 1) {
+	@return translate($details_arrow / 1.5) scaleX(calc($details_direction * $direction));
+}
+
+@mixin detailsAnimation() {
+	@for $o from 1 through length($orbts) {
+		$planet_count: nth($orbts, $o);
+
+		// Keyframes
+		@for $p from 1 through ($planet_count / 2) {
+			// Animation-Name
+			.orbit[style*='--orbit-planets:#{$planet_count}'] {
+				// Details
+				.planet[style*='--planet-index:#{$p - 1}'] .planetDetails {
+					animation-name: detailsFlip#{$planet_count}#{$p};
+				}
+
+				// Details Mirror
+				$p-mirror: ($planet_count / 2) + $p - 1;
+				.planet[style*='--planet-index:#{$p-mirror}'] .planetDetails {
+					animation-name: detailsFlip#{$planet_count}#{$p};
+				}
+
+				// Text
+				.planet[style*='--planet-index:#{$p - 1}'] .planetDetails > * {
+					animation-name: detailsTextsFlip#{$planet_count}#{$p};
+				}
+
+				// Text Mirror
+				.planet[style*='--planet-index:#{$p-mirror}'] .planetDetails > * {
+					animation-name: detailsTextsFlip#{$planet_count}#{$p};
+				}
+			}
+
+			// Keyframes
+			$steps: 100 / nth($orbts, $o);
+			$index: ($planet_count / 2) - $p + 1;
+
+			$step: (($steps * ($index)) + 0%);
+			$step-mirror: 50 + $step;
+
+			$angle: 360 / $planet_count;
+			$rotation: $angle * $index;
+			$rotation-reverse: 180 + $rotation;
+
+			// If its 50% percentage there is no need for reverse flip as its in the center
+			@if ($step >= 50%) {
+				@keyframes detailsFlip#{$planet_count}#{$p} {
+					0% {
+						// Forward
+						transform: detailsTransform(0, 1);
+					}
+
+					50% {
+						// Forward
+						transform: detailsTransform(180, 1);
+					}
+
+					50.01% {
+						// Reverse
+						transform: detailsTransform(180, -1);
+					}
+
+					100% {
+						// Reverse
+						transform: detailsTransform(360, -1);
+					}
+				}
+
+				@keyframes detailsTextsFlip#{$planet_count}#{$p} {
+					0% {
+						// Forward
+						transform: detailsTextsTransform(1);
+					}
+
+					50% {
+						// Forward
+						transform: detailsTextsTransform(1);
+					}
+
+					50.01% {
+						// Reverse
+						transform: detailsTextsTransform(-1);
+					}
+
+					100% {
+						// Reverse
+						transform: detailsTextsTransform(-1);
+					}
+				}
+			} @else {
+				@keyframes detailsFlip#{$planet_count}#{$p} {
+					0% {
+						// Forward
+						transform: detailsTransform(0, 1);
+					}
+
+					#{$step + 0%} {
+						// Forward
+						transform: detailsTransform($rotation, 1);
+					}
+
+					#{$step + 0.01%} {
+						// Reverse
+						transform: detailsTransform($rotation, -1);
+					}
+
+					#{$step-mirror + 0%} {
+						// Reverse
+						transform: detailsTransform($rotation-reverse, -1);
+					}
+
+					#{$step-mirror + 0.01%} {
+						// Forward
+						transform: detailsTransform($rotation-reverse, 1);
+					}
+
+					100% {
+						// Forward
+						transform: detailsTransform(360, 1);
+					}
+				}
+
+				@keyframes detailsTextsFlip#{$planet_count}#{$p} {
+					0% {
+						// Forward
+						transform: detailsTextsTransform(1);
+					}
+
+					#{$step + 0%} {
+						// Forward
+						transform: detailsTextsTransform(1);
+					}
+
+					#{$step + 0.01%} {
+						// Reverse
+						transform: detailsTextsTransform(-1);
+					}
+
+					#{$step-mirror + 0%} {
+						// Reverse
+						transform: detailsTextsTransform(-1);
+					}
+
+					#{$step-mirror + 0.01%} {
+						// Forward
+						transform: detailsTextsTransform(1);
+					}
+
+					100% {
+						// Forward
+						transform: detailsTextsTransform(1);
+					}
+				}
+			}
+		}
+	}
+}

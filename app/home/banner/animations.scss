@@ -1,0 +1,195 @@
+// SCROLL
+$SCROLL-START: 5;
+@keyframes bannerScroll {
+	#{$SCROLL-START * 1%} {
+		transform: translate(-50%, -50%) scale(0.07) rotate(0deg);
+	}
+
+	15% {
+		transform: translate(-50%, -250%) scale(0.07) rotate(0deg);
+	}
+
+	100% {
+		transform: translate(-50%, -250%) scale(0.07) rotate(0deg);
+	}
+}
+
+@keyframes spaceshipWindowScroll {
+	#{($SCROLL-START / 1.2 ) * 1%} {
+		opacity: 1;
+	}
+}
+
+@keyframes githubScroll {
+	#{$SCROLL-START * 1%} {
+		transform: scale(0.5);
+	}
+
+	15% {
+		transform: scale(0.5);
+		opacity: 0;
+	}
+
+	100% {
+		transform: scale(0.5);
+		opacity: 0;
+	}
+}
+
+// GENERAL
+$BOUNCE-DURATION: 20s;
+$STEPS: 1 0.2 0.5 0.7 0.8 0.4 0.3 1 0.5;
+@keyframes brightnessLoop {
+	@for $i from 1 through length($STEPS) {
+		$opacity: 1 - nth($STEPS, $i);
+
+		#{$i * 0.2%} {
+			filter: brightness($opacity);
+		}
+	}
+
+	#{length($STEPS) + 0.1%} {
+		filter: brightness(1);
+	}
+
+	100% {
+		filter: brightness(1);
+	}
+}
+
+@keyframes breathLoop {
+	0% {
+		transform: scale(1);
+	}
+
+	10% {
+		transform: scale(1.1);
+	}
+
+	20%{
+		transform: scale(1);
+	}
+
+	30%{
+		transform: scale(1.1);
+	}
+
+	40%{
+		transform: scale(1);
+	}
+
+	100%{
+		transform: scale(1);
+	}
+}
+
+// FLOOR
+@keyframes floorLoop {
+	0% {
+		stroke-dasharray: 1000;
+		stroke-dashoffset: 2000;
+	}
+
+	100% {
+		stroke-dasharray: 1000;
+		stroke-dashoffset: -2000;
+	}
+}
+
+// ASTRONAUT
+@keyframes astronautIdle {
+	to {
+		// bottom: -35%;
+		transform: translate(-50%, -55%) scale(0.85) rotate(-1deg);
+	}
+}
+
+@keyframes astronautGreet {
+	to {
+		transform: translate(-35px, 30px) rotate(-5deg);
+	}
+}
+
+@keyframes astronautLeg {
+	to {
+		transform: translate(-1%, -0.5%) rotate(-1deg);
+	}
+}
+
+// CAT
+@keyframes catSleepLoop {
+	from {
+		opacity: 1;
+		transform: translate(50px, 35px) scale(0.5);
+	}
+
+	50% {
+		opacity: 0;
+		transform: translate(100px, -50px) scale(1.2);
+	}
+
+	100% {
+		opacity: 0;
+	}
+}
+
+// SERVER
+@keyframes serverLedLoop {
+	0% {
+		fill: #13357e;
+	}
+	100% {
+		fill: #46ddef;
+	}
+}
+
+// TEXT
+@property --contact-background-position {
+	syntax: '<angle>';
+	inherits: false;
+	initial-value: 0deg;
+}
+
+@keyframes textLoop {
+	0% {
+		opacity: 0;
+		transform: translateY(-100px);
+	}
+
+	10% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	90% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	100% {
+		opacity: 0;
+		transform: translateY(100px);
+	}
+}
+
+@keyframes textContentLoop {
+	30% {
+		content: 'Chousein';
+	}
+
+	95% {
+		content: 'Developer';
+	}
+}
+
+@keyframes contactLoop {
+	to {
+		--contact-background-position: 360deg;
+	}
+}
+
+@keyframes contactStarsLoop {
+	to {
+		transform: rotate(360deg) translate(-25px, -50px);
+	}
+}

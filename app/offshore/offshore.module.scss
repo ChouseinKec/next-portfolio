@@ -1,0 +1,80 @@
+@use './animations' as *;
+
+$BUBBLE: true;
+$FISH: true;
+
+.turbine {
+	height: 210vmax;
+	width: auto;
+
+	position: absolute;
+	top: 100vmax;
+	left: 50%;
+
+	transform: translate(-50%, -50%) scale(1.3);
+	z-index: 10;
+
+	&Wings {
+		animation: turbine__wings-loop 5s infinite linear;
+		transform-origin: 50% 33.5%;
+	}
+}
+
+.underwater {
+	height: 100vh;
+	width: 100vw;
+
+	position: absolute;
+	bottom: 0%;
+	left: 0%;
+
+	transform: translateY(7%) scale(1.15);
+
+	z-index: 10;
+
+	&Background {
+		opacity: 0.8;
+		animation: water-loop 5s infinite linear alternate;
+	}
+
+	@if ($BUBBLE) {
+		@for $i from 1 through 5 {
+			$x: random(100) * $i;
+			$delay: $i * 1s;
+			$duration: $i * 1s + 3s;
+
+			&Bubble#{$i} {
+				transform: translate($x, $x);
+				animation: bubbles-loop $duration $delay infinite linear;
+			}
+		}
+	}
+
+	@if ($FISH) {
+		@for $i from 1 through 10 {
+			$delay: $i + 1s;
+			$duration: $i * 1s + 20s;
+
+			&Fish#{$i} {
+				opacity: 0;
+				animation: fish-loop $duration $delay infinite linear forwards;
+			}
+		}
+	}
+}
+
+
+
+@media (orientation: portrait) {
+	.turbine {
+		height: 400vmax;
+		top: 195vmax;
+	}
+
+	.underwater {
+		height: auto;
+		position: relative;
+		transform: translateY(-100%) scale(3);
+		// transform: translateY(-50%);
+	}
+}
