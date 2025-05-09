@@ -67,7 +67,7 @@ const Banner: React.FC = () => {
 
 
                 <div className={styles.links}>
-                    <a className={styles.github} href='https://github.com/ChouseinKec/next-page-builder' target='_blank' />
+                    <a className={styles.github} href='https://github.com/ChouseinKec/' target='_blank' />
                 </div>
             </section>
             {/* Working On */}
