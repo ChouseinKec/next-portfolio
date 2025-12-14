@@ -1,4 +1,4 @@
-import styles from './banner.module.css';
+import styles from './banner.module.scss';
 import { Workshop as Scene } from '../../../components/sprite/sprite';
 
 const Banner: React.FC = () => {

@@ -4,6 +4,25 @@
 	}
 }
 
+:global(body[data-supports-timeline='false']) {
+	.about {
+		padding-top: 10vmax;
+	}
+
+	.text {
+		p {
+			span {
+				animation: none;
+				animation-timeline: unset;
+				color: rgb(255, 255, 255);
+				b {
+					color: rgb(255, 255, 255);
+				}
+			}
+		}
+	}
+}
+
 .about {
 	width: 100vw;
 	display: flex;
@@ -63,10 +82,10 @@
 }
 
 @media (orientation: portrait) {
-	.about{
+	.about {
 		margin-top: -40vh;
 	}
 	.text {
-		width: 90%;
+		width: 70%;
 	}
 }

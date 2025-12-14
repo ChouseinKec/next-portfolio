@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 
 import { Education, Programming, Robotics, Offshore, Freelance, Connector } from '@/components/sprite/sprite';
-import styles from './timeline.module.css';
+import styles from './timeline.module.scss';
 
 
 interface timeline {
@@ -19,58 +19,58 @@ const DATA: timeline[] = [
     {
         id: "education",
         svg: <Education styles={styles} className={'vector'} />,
-        title: "Title",
-        titleSubFix: "Subtitle",
-        dateFrom: 2000,
-        dateTo: 2010,
-        country: "Country",
-        content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+        title: "Education",
+        titleSubFix: "Mechatronics",
+        dateFrom: 2013,
+        dateTo: 2016,
+        country: "Turkey",
+        content: "I completed my high school education in Greece and then pursued a degree as a Mechatronic Technician in Turkey.",
     },
     {
         id: "programming",
         svg: <Programming styles={styles} className={'vector'} />,
-        title: "Title",
-        titleSubFix: "Subtitle",
-        dateFrom: 2000,
-        dateTo: 2010,
-        country: "Country",
-        content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        title: "Codenorm GmbH",
+        titleSubFix: "Programming",
+        dateFrom: 2016,
+        dateTo: 2017,
+        country: "Germany",
+        content: "After graduating, I completed a 6-month internship at Codenorm GmbH, where I began my web development journey by learning HTML, CSS, JavaScript, Bootstrap, jQuery,AJAX,Docker and Git.",
         link: "/workshop#programming"
     },
 
     {
         id: "robotics",
         svg: <Robotics styles={styles} className={'vector'} />,
-        title: "Title",
-        titleSubFix: "Subtitle",
-        dateFrom: 2000,
-        dateTo: 2010,
-        country: "Country",
-        content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        title: "Dost GmbH",
+        titleSubFix: "Robotics",
+        dateFrom: 2017,
+        dateTo: 2018,
+        country: "Germany",
+        content: "At Dost GmbH, i contributed to projects like custom small robots, which deepened my expertise in electronics, PCB design, 3D modeling, 3D printing, C++, and C#",
         link: "/workshop#robotics"
     },
 
     {
         id: "offshore",
         svg: <Offshore styles={styles} className={'vector'} />,
-        title: "Title",
-        titleSubFix: "Subtitle",
-        dateFrom: 2000,
-        dateTo: 2010,
-        country: "Country",
-        content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        title: "Dost GmbH",
+        titleSubFix: "Offshore",
+        dateFrom: 2018,
+        dateTo: 2020,
+        country: "Germany",
+        content: "I worked as a rope-access electrician in the offshore wind industry, performing tasks like bolting campaigns, installing and calibrating sensors, and maintaining cable loops.",
         link: "/offshore"
     },
 
     {
         id: "freelance",
         svg: <Freelance styles={styles} className={'vector'} />,
-        title: "Title",
-        titleSubFix: "Subtitle",
-        dateFrom: 2000,
-        dateTo: 2010,
-        country: "Country",
-        content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+        title: "Freelance",
+        titleSubFix: "Autodidact",
+        dateFrom: 2020,
+        dateTo: 2024,
+        country: "Greece",
+        content: "In 2020, I returned to Greece to complete my mandatory military service, which coincided with the COVID-19 pandemic. During this time, I continued to stay productive by working on freelance projects and expanding my skill set.",
         link: "/workshop"
     }
 ]

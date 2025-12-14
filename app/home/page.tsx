@@ -5,6 +5,7 @@ import Banner from './banner/banner';
 import About from './about/about';
 import Timeline from './timeline/timeline';
 import Skills from './skills/skills';
+
 import './global.css';
 
 export default function Home() {
@@ -32,8 +33,6 @@ export default function Home() {
 
       {/* Skills */}
       <Skills />
-
-
 
     </>
   )

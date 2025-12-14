@@ -1,64 +1,36 @@
-# 🧠 Personal Portfolio — Built with Next.js, React, HTML & CSS Only
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-Welcome to the source code of my personal portfolio site, built using **Next.js** with a unique twist:  
-All interactive components (animations, tabs, modals) are crafted **exclusively with HTML and CSS**, without relying on JavaScript logic.
+## Getting Started
 
-### 🌐 Live Site
+First, run the development server:
 
-[www.chouseinkechagia.com](https://www.chouseinkechagia.com)
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
----
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## 📌 About This Project
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This portfolio is designed to showcase my front-end development skills by taking an unconventional approach. While the project uses **Next.js and React** for structure and component logic, all user-facing interactions—such as tabs, modals, and animations—are implemented using **only HTML and CSS**, without client-side JavaScript logic.
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-This demonstrates how much can be achieved with core web technologies alone, while still maintaining the power and organization of modern frameworks like React.
+## Learn More
 
-**Key features built without JavaScript logic:**
+To learn more about Next.js, take a look at the following resources:
 
-- Tabbed content areas
-- Modal windows
-- Page animations and transitions
-- Responsive layout
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-This method may not be ideal for large-scale production apps, but it highlights creative problem-solving and a strong foundation in web fundamentals.
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
----
+## Deploy on Vercel
 
-## 🛠️ Technologies Used
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-- [Next.js](https://nextjs.org/)
-- [React](https://reactjs.org/)
-- HTML5
-- CSS3 (Flexbox, Grid, custom properties)
-- CSS-only techniques (checkbox hacks, transitions, pseudo-classes)
-
----
-
-## 🧪 How to Run It Locally
-
-1. **Clone the repo**
-   ```bash
-   git clone https://github.com/ChouseinKec/next-portfolio.git
-   cd next-portfolio
-   ```
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
-3. **Run the development server**
-
-   ```bash
-   npm run dev
-   ```
-
-4. **Open http://localhost:3000 in your browser.**
-
----
-
-## 🤝 Contributing
-This project is for showcasing personal work.
-
-## 📬 Contact
- Feel free to reach out via email: chouseinkechagia@outlook.com
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

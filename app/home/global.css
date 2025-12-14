@@ -1,3 +1,8 @@
 body {
     background: #0a041a;
 }
+
+body[data-supports-timeline='false'] .placeholder {
+    height: 30vh;
+
+}

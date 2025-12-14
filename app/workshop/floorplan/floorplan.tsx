@@ -1,4 +1,4 @@
-import styles from './floorplan.module.css';
+import styles from './floorplan.module.scss';
 import Image from 'next/image'
 
 

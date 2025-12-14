@@ -1,22 +1,63 @@
 @use './animations' as *;
+:global(body[data-supports-timeline='false']) {
+	.text {
+		&Title,
+		&Date,
+		&Content,
+		&More {
+			animation-name: none;
+			animation-timeline: none;
+			opacity: 1;
+			width: auto;
+
+			&:hover {
+				transform: scale(1);
+			}
+		}
+	}
+
+	.vector {
+		opacity: 1;
+		width: 20vmax;
+
+		&Glow,
+		&Outline,
+		&Background {
+			animation-name: none;
+			animation-timeline: none;
+			opacity: 1;
+			stroke-dashoffset: 0;
+			stroke-dasharray: 0;
+		}
+
+		&Glow {
+			opacity: 0.3;
+		}
+	}
+
+	.connector {
+		animation-name: none;
+		animation-timeline: none;
+		opacity: 1;
+	}
+}
 
 .timeline {
 	display: flex;
 	flex-direction: column;
 	padding: 0 20vmax;
-	gap: 7vmax;
 
 	position: relative;
 }
 
 .line {
-	height: 65vh;
 	display: grid;
-	grid-template-columns: 0.6fr 1fr;
-	grid-template-rows: 1fr 1fr;
+	grid-template-columns: 30% 70%;
+	grid-template-rows: 1fr 20vmax;
 	align-items: flex-start;
 	column-gap: 5vmax;
 
+	position: relative;
 	&:nth-child(even) {
 		transform: scaleX(-1);
 
@@ -35,7 +76,7 @@
 
 .image {
 	position: relative;
-
+	width: 100%;
 	svg {
 		transform: scale(1.4);
 		width: 100%;
@@ -44,12 +85,13 @@
 }
 
 .connector {
-	height: 22vmax;
-	width: 60vmax;
+	height: 100%;
+	width: 70%;
 
+	margin-left: 8vmax;
 	grid-column: 1/-1;
 	grid-row: 2;
-	transform: scaleX(-1.15) translateY(-3vmax);
+	transform: scaleX(-1);
 
 	stroke-dasharray: 1000;
 	opacity: 0;
@@ -178,14 +220,13 @@
 
 @media (orientation: portrait) {
 	.timeline {
-		padding: 0 0vmax;
+		padding: 0 20vmax;
 		gap: 0vmax;
 	}
 
 	.line {
-		height: 45vh;
-		grid-template-columns: minmax(0, 0.4fr) minmax(0, 0.5fr);
-		grid-template-rows: 1fr 1fr;
+		grid-template-rows: 1fr 10vmax;
+		grid-template-columns: 35% 60%;
 		column-gap: 1vmax;
 
 		&:last-child {
@@ -203,10 +244,69 @@
 			}
 		}
 	}
-	.connector {
-		height: 22vmax;
-		width: 60vmax;
 
-		transform: scaleX(-1) translateY(-3vmax) translateX(5vmax);
+	@media (max-width: 1200px) {
+		.timeline {
+			padding: 0 15vmax;
+			gap: 0vmax;
+		}
+
+		.line {
+			grid-template-columns: 30% 70%;
+		}
+	}
+
+	@media (max-width: 1000px) {
+		.timeline {
+			padding: 0 10vmax;
+			gap: 0vmax;
+		}
+
+		.line {
+			grid-template-rows: 1fr 10vmax;
+			grid-template-columns: 30% 65%;
+			column-gap: 1vmax;
+
+			&:last-child {
+				height: 25vh;
+				grid-template-rows: 1fr;
+			}
+		}
+	}
+
+	@media (max-width: 800px) {
+		.timeline {
+			padding: 0 5vmax;
+			gap: 0vmax;
+		}
+
+		.line {
+			grid-template-rows: 1fr 10vmax;
+			grid-template-columns: 30% 65%;
+			column-gap: 1vmax;
+
+			&:last-child {
+				height: 25vh;
+				grid-template-rows: 1fr;
+			}
+		}
+	}
+
+	@media (max-width: 700px) {
+		.line {
+			padding: 0 3vmax;
+			grid-template-columns: 0.5fr 1fr;
+			align-items: center;
+
+			.image {
+				grid-column: 1;
+				grid-row: 1;
+			}
+
+			.text {
+				grid-column: 2;
+				grid-row: 1;
+			}
+		}
 	}
 }

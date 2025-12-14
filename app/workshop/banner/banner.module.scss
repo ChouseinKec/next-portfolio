@@ -15,7 +15,7 @@
 		height: 100%;
 
 		position: absolute;
-
+		background: linear-gradient(0deg, #98b3d3, #87afe5);
 		z-index: 1;
 
 		&City {
@@ -55,7 +55,7 @@
 
 		position: absolute;
 
-		transform: translateY(20%) scale(0.8);
+		transform: translateY(11vmax) scale(0.8);
 
 		filter: brightness(1.2);
 		z-index: 2;

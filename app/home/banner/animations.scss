@@ -2,15 +2,25 @@
 $SCROLL-START: 5;
 @keyframes bannerScroll {
 	#{$SCROLL-START * 1%} {
-		transform: translate(-50%, -50%) scale(0.07) rotate(0deg);
+		transform: translate3d(-50%, -50%, 0) scale(0.07) rotate(0deg);
 	}
 
 	15% {
-		transform: translate(-50%, -250%) scale(0.07) rotate(0deg);
+		transform: translate3d(-50%, -250%, 0) scale(0.07) rotate(0deg);
 	}
 
 	100% {
-		transform: translate(-50%, -250%) scale(0.07) rotate(0deg);
+		transform: translate3d(-50%, -250%, 0) scale(0.07) rotate(0deg);
+	}
+}
+
+@keyframes svgScroll {
+	1.2% {
+		display: none;
+	}
+
+	100% {
+		display: none;
 	}
 }
 
@@ -66,20 +76,47 @@ $STEPS: 1 0.2 0.5 0.7 0.8 0.4 0.3 1 0.5;
 		transform: scale(1.1);
 	}
 
-	20%{
+	20% {
 		transform: scale(1);
 	}
 
-	30%{
+	30% {
 		transform: scale(1.1);
 	}
 
-	40%{
+	40% {
 		transform: scale(1);
 	}
 
-	100%{
+	100% {
 		transform: scale(1);
+	}
+}
+
+@keyframes useragentLoop {
+	0% {
+		opacity: 0;
+		transform: translate3d(125%, 0, 0);
+	}
+	0.01% {
+		opacity: 1;
+		transform: translate3d(125%, 0, 0);
+	}
+	50% {
+		opacity: 1;
+		transform: translate3d(-100%, 0, 0);
+	}
+	50.01% {
+		opacity: 0;
+		transform: translate3d(125%, 0, 0);
+	}
+	50.02% {
+		opacity: 1;
+		transform: translate3d(125%, 0, 0);
+	}
+	100% {
+		opacity: 1;
+		transform: translate3d(-100%, 0, 0);
 	}
 }
 
@@ -88,11 +125,17 @@ $STEPS: 1 0.2 0.5 0.7 0.8 0.4 0.3 1 0.5;
 	0% {
 		stroke-dasharray: 1000;
 		stroke-dashoffset: 2000;
+		opacity: 1;
+	}
+
+	50%{
+		opacity: 0.2;
 	}
 
 	100% {
 		stroke-dasharray: 1000;
 		stroke-dashoffset: -2000;
+		opacity: 1;
 	}
 }
 
@@ -100,19 +143,26 @@ $STEPS: 1 0.2 0.5 0.7 0.8 0.4 0.3 1 0.5;
 @keyframes astronautIdle {
 	to {
 		// bottom: -35%;
-		transform: translate(-50%, -55%) scale(0.85) rotate(-1deg);
+		transform: translate3d(-50%, -55%, 0) scale(0.85) rotate(-1deg);
 	}
 }
 
 @keyframes astronautGreet {
 	to {
-		transform: translate(-35px, 30px) rotate(-5deg);
+		transform: translate3d(-35px, 30px, 0) rotate(-5deg);
 	}
 }
 
 @keyframes astronautLeg {
 	to {
-		transform: translate(-1%, -0.5%) rotate(-1deg);
+		transform: translate3d(-1%, -0.5%, 0) rotate(-1deg);
+	}
+}
+
+// HOSE
+@keyframes hoseIdle {
+	to {
+		transform: translate3d(-50%, -52.5%, 0) scale(0.85) rotate(0deg);
 	}
 }
 
@@ -120,12 +170,12 @@ $STEPS: 1 0.2 0.5 0.7 0.8 0.4 0.3 1 0.5;
 @keyframes catSleepLoop {
 	from {
 		opacity: 1;
-		transform: translate(50px, 35px) scale(0.5);
+		transform: translate3d(50px, 35px, 0) scale(0.5);
 	}
 
 	50% {
 		opacity: 0;
-		transform: translate(100px, -50px) scale(1.2);
+		transform: translate3d(100px, -50px, 0) scale(1.2);
 	}
 
 	100% {
@@ -153,22 +203,22 @@ $STEPS: 1 0.2 0.5 0.7 0.8 0.4 0.3 1 0.5;
 @keyframes textLoop {
 	0% {
 		opacity: 0;
-		transform: translateY(-100px);
+		transform: translate3d(0, -100px, 0);
 	}
 
 	10% {
 		opacity: 1;
-		transform: translateY(0);
+		transform: translate3d(0, 0, 0);
 	}
 
 	90% {
 		opacity: 1;
-		transform: translateY(0);
+		transform: translate3d(0, 0, 0);
 	}
 
 	100% {
 		opacity: 0;
-		transform: translateY(100px);
+		transform: translate3d(0, 100px, 0);
 	}
 }
 
@@ -190,6 +240,6 @@ $STEPS: 1 0.2 0.5 0.7 0.8 0.4 0.3 1 0.5;
 
 @keyframes contactStarsLoop {
 	to {
-		transform: rotate(360deg) translate(-25px, -50px);
+		transform: rotate(360deg) translate3d(-25px, -50px, 0);
 	}
 }

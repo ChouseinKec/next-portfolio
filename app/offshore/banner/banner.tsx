@@ -5,8 +5,8 @@ const Banner: React.FC = () => {
 
     return (
         <section className={styles.banner}>
-            <h1 className={styles.bannerTitle}>TITLE</h1>
-            <span className={styles.bannerSubtitle}>(Subtitle)</span>
+            <h1 className={styles.bannerTitle}>OFFSHORE</h1>
+            <span className={styles.bannerSubtitle}>(Dost GmbH)</span>
 
             <Cloud styles={styles} className={'bannerCloud1'} variation={1} />
             <Cloud styles={styles} className={'bannerCloud2'} />

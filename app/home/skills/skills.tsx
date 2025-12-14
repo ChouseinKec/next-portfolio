@@ -1,6 +1,6 @@
 import React, { CSSProperties, ReactElement, useMemo } from 'react';
 import Image from 'next/image'
-import styles from './skills.module.css';
+import styles from './skills.module.scss';
 
 interface TextCircular {
     className?: string;
@@ -201,7 +201,7 @@ const Skills: React.FC<Skills> = ({ id = 'skills' }) => {
                     planetName: 'JavaScript',
                     details: {
                         listItems: [
-                            { property: 'Experience', content: <Rating rating={4.5} /> },
+                            { property: 'Experience', content: <Rating rating={4} /> },
                             { property: 'Learn More', content: <a href="/workshop#programming">Programming</a> }
                         ]
                     }
@@ -218,7 +218,7 @@ const Skills: React.FC<Skills> = ({ id = 'skills' }) => {
                     planetName: 'CSS-3',
                     details: {
                         listItems: [
-                            { property: 'Experience', content: <Rating rating={4.5} /> },
+                            { property: 'Experience', content: <Rating rating={4} /> },
                             { property: 'Learn More', content: <a href="/workshop#programming">Programming</a> }
                         ]
                     }
@@ -230,7 +230,7 @@ const Skills: React.FC<Skills> = ({ id = 'skills' }) => {
                     planetName: 'HTML-5',
                     details: {
                         listItems: [
-                            { property: 'Experience', content: <Rating rating={4.5} /> },
+                            { property: 'Experience', content: <Rating rating={4} /> },
                             { property: 'Learn More', content: <a href="/workshop#programming">Programming</a> }
                         ]
                     }
@@ -247,7 +247,7 @@ const Skills: React.FC<Skills> = ({ id = 'skills' }) => {
                     planetName: 'PHP',
                     details: {
                         listItems: [
-                            { property: 'Experience', content: <Rating rating={3} /> },
+                            { property: 'Experience', content: <Rating rating={2} /> },
                             { property: 'Learn More', content: <a href="/workshop#programming">Programming</a> }
                         ]
                     }
@@ -259,7 +259,7 @@ const Skills: React.FC<Skills> = ({ id = 'skills' }) => {
                     planetName: 'React',
                     details: {
                         listItems: [
-                            { property: 'Experience', content: <Rating rating={4} /> },
+                            { property: 'Experience', content: <Rating rating={3.5} /> },
                             { property: 'Learn More', content: <a href="/workshop#programming">Programming</a> }
                         ]
                     }
@@ -271,7 +271,7 @@ const Skills: React.FC<Skills> = ({ id = 'skills' }) => {
                     planetName: 'WooCommerce',
                     details: {
                         listItems: [
-                            { property: 'Experience', content: <Rating rating={3} /> },
+                            { property: 'Experience', content: <Rating rating={2} /> },
                             { property: 'Learn More', content: <a href="/workshop#programming">Programming</a> }
                         ]
                     }
@@ -283,7 +283,7 @@ const Skills: React.FC<Skills> = ({ id = 'skills' }) => {
                     planetName: 'WordPress',
                     details: {
                         listItems: [
-                            { property: 'Experience', content: <Rating rating={3.5} /> },
+                            { property: 'Experience', content: <Rating rating={2.5} /> },
                             { property: 'Learn More', content: <a href="/workshop#programming">Programming</a> }
                         ]
                     }
@@ -312,7 +312,7 @@ const Skills: React.FC<Skills> = ({ id = 'skills' }) => {
                     planetName: 'OnShape',
                     details: {
                         listItems: [
-                            { property: 'Experience', content: <Rating rating={3.5} /> },
+                            { property: 'Experience', content: <Rating rating={3} /> },
                             { property: 'Learn More', content: <a href="/workshop#design">Design</a> }
                         ]
                     }
@@ -324,7 +324,7 @@ const Skills: React.FC<Skills> = ({ id = 'skills' }) => {
                     planetName: 'Blender',
                     details: {
                         listItems: [
-                            { property: 'Experience', content: <Rating rating={2.5} /> },
+                            { property: 'Experience', content: <Rating rating={3} /> },
                             { property: 'Learn More', content: <a href="/workshop#design">Design</a> }
                         ]
                     }
@@ -336,7 +336,7 @@ const Skills: React.FC<Skills> = ({ id = 'skills' }) => {
                     planetName: 'Unity 3D',
                     details: {
                         listItems: [
-                            { property: 'Experience', content: <Rating rating={2} /> },
+                            { property: 'Experience', content: <Rating rating={2.5} /> },
                             { property: 'Learn More', content: <a href="/workshop#design">Design</a> }
                         ]
                     }
@@ -353,7 +353,7 @@ const Skills: React.FC<Skills> = ({ id = 'skills' }) => {
                     planetName: 'PfSense',
                     details: {
                         listItems: [
-                            { property: 'Experience', content: <Rating rating={3} /> },
+                            { property: 'Experience', content: <Rating rating={2.5} /> },
                             { property: 'Learn More', content: <a href="/workshop#production">Production</a> }
                         ]
                     }
@@ -365,7 +365,7 @@ const Skills: React.FC<Skills> = ({ id = 'skills' }) => {
                     planetName: 'Unraid',
                     details: {
                         listItems: [
-                            { property: 'Experience', content: <Rating rating={3.5} /> },
+                            { property: 'Experience', content: <Rating rating={2.5} /> },
                             { property: 'Learn More', content: <a href="/workshop#production">Production</a> }
                         ]
                     }
@@ -377,7 +377,7 @@ const Skills: React.FC<Skills> = ({ id = 'skills' }) => {
                     planetName: 'Linux',
                     details: {
                         listItems: [
-                            { property: 'Experience', content: <Rating rating={3.5} /> },
+                            { property: 'Experience', content: <Rating rating={2.5} /> },
                             { property: 'Learn More', content: <a href="/workshop#production">Production</a> }
                         ]
                     }
@@ -389,7 +389,7 @@ const Skills: React.FC<Skills> = ({ id = 'skills' }) => {
                     planetName: 'C++',
                     details: {
                         listItems: [
-                            { property: 'Experience', content: <Rating rating={3} /> },
+                            { property: 'Experience', content: <Rating rating={2} /> },
                             { property: 'Learn More', content: <a href="/workshop#programming">Programming</a> }
                         ]
                     }

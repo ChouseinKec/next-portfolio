@@ -23,11 +23,11 @@
 
 @keyframes coreLight {
 	from {
-		opacity: 1;
+		filter: blur(5px);
 	}
 
 	to {
-		opacity: 0.5;
+		filter: blur(0px);
 	}
 }
 

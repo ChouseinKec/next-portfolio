@@ -51,8 +51,8 @@
 			top: 0;
 			left: 0;
 			opacity: 0.4;
-
-			box-shadow: stars.stars(500, 1500, 0, 0.05);
+			filter:blur(1px);
+			box-shadow: stars.stars(500, 2500, 0, 0.3);
 		}
 	}
 }
@@ -121,9 +121,7 @@
 			}
 
 			&::before {
-				background: radial-gradient(circle at 50 50, #b3a7c0, #633f89 100px);
-
-				box-shadow: inset 0 0 5px #4b447940, inset 0 0 10px #ab49c648;
+				// box-shadow: inset 0 0 5px #4b447940, inset 0 0 10px #ab49c648;
 				filter: blur(5px);
 
 				@if ($ANIMATE) {
