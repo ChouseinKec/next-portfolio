@@ -7,7 +7,7 @@ import { Server, Astronaut, Arc, Cables, Floor, Spaceship, Cat, Hose } from '@/c
 const Banner: React.FC = () => {
 
     return (
-        <section className={styles.banner}>
+        <section id='banner' className={styles.banner}>
 
             {/* Spaceship */}
             < Spaceship styles={styles} className={'spaceship'} />
@@ -31,11 +31,10 @@ const Banner: React.FC = () => {
                     </div>
                 </div>
                 <span>-or-</span>
-                <button className={styles.textContact}>
+                <a href="mailto:chouseinkechagia@outlook.com" className={styles.textContact}>
                     <span className={styles.textContactName}>Contact Me</span>
                     <span className={styles.textContactGalaxy} />
-                    <div className={styles.textContactEmail}><span>chouseinkechagia&#64;outlook&#46;com</span></div>
-                </button>
+                </a>
 
             </div>
 

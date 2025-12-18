@@ -1,12 +1,12 @@
 import { ReactElement } from 'react';
-import styles from './navbar.module.css';
+import styles from './navbar.module.scss';
 interface Navbar {
     children: ReactElement | ReactElement[];
 }
 const Navbar: React.FC<Navbar> = ({ children }) => {
 
     return (
-        <nav className={styles.navbar}>
+        <nav id='navbar' className={styles.navbar}>
 
             <a className={styles.logo} href={`/`}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="71" height="54" viewBox="0 0 71 54" fill="none">

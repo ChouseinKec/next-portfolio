@@ -1,4 +1,4 @@
-// CLOUD
+@use 'sass:math';
 @keyframes cloudLoop {
 	from {
 		opacity: 1;
@@ -45,7 +45,7 @@
 // PRINTER
 @keyframes printerAxisLoop {
 	@for $i from 1 through 30 {
-		$random: random(100) * 0.1;
+		$random: math.random(100) * 0.1;
 		#{($i) * 3%} {
 			transform: translateY($random + 85px);
 		}
@@ -53,7 +53,7 @@
 }
 @keyframes printerExtruderLoop {
 	@for $i from 1 through 30 {
-		$random: random(100) * 0.01;
+		$random: math.random(100) * 0.01;
 		#{($i) * 3%} {
 			transform: translateX($random * 1%);
 		}
@@ -63,7 +63,7 @@
 // CNC
 @keyframes cncSpindleLoop {
 	@for $i from 1 through 30 {
-		$random: random(100) * 0.1;
+		$random: math.random(100) * 0.1;
 		#{($i) * 3%} {
 			transform: translateY($random);
 		}
@@ -71,7 +71,7 @@
 }
 @keyframes cncToolsLoop {
 	@for $i from 1 through 30 {
-		$random: random(100) * 0.01;
+		$random: math.random(100) * 0.01;
 		#{($i) * 3%} {
 			transform: translateX($random * 1%);
 		}

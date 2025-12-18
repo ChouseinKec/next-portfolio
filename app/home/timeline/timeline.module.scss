@@ -125,7 +125,7 @@
 	}
 
 	&Title {
-		font-size: 4vmax;
+		font-size: 3.5vmax;
 		white-space: nowrap;
 		span {
 			font-size: 1.8vmax;
@@ -189,7 +189,7 @@
 		}
 
 		&:hover {
-			transform: scale(1.2);
+			transform: scale(1.1);
 		}
 	}
 }
@@ -219,11 +219,6 @@
 }
 
 @media (orientation: portrait) {
-	.timeline {
-		padding: 0 20vmax;
-		gap: 0vmax;
-	}
-
 	.line {
 		grid-template-rows: 1fr 10vmax;
 		grid-template-columns: 35% 60%;
@@ -248,7 +243,6 @@
 	@media (max-width: 1200px) {
 		.timeline {
 			padding: 0 15vmax;
-			gap: 0vmax;
 		}
 
 		.line {
@@ -259,7 +253,6 @@
 	@media (max-width: 1000px) {
 		.timeline {
 			padding: 0 10vmax;
-			gap: 0vmax;
 		}
 
 		.line {
@@ -277,7 +270,6 @@
 	@media (max-width: 800px) {
 		.timeline {
 			padding: 0 5vmax;
-			gap: 0vmax;
 		}
 
 		.line {

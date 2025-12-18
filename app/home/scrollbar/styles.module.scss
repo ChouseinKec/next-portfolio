@@ -1,0 +1,499 @@
+@use './animations.scss';
+
+.scrollbar {
+	position: fixed;
+	left: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+	z-index: 999;
+	height: 20vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+.line {
+	position: absolute;
+	left: 50%;
+	top: 2%;
+	transform: translateX(-50%);
+	width: 3px;
+	height: 96%;
+	background: linear-gradient(to bottom, #1379e031, #e523ff3f);
+	border-radius: 2px;
+
+	opacity: 0.2;
+	filter: drop-shadow(0 0 4px #000000);
+}
+
+.progressFill {
+	position: absolute;
+	left: 50%;
+	top: 2%;
+	transform: translateX(-50%);
+	width: 2px;
+	height: 0%;
+	background: linear-gradient(to bottom, #1379e0fd, #e523ff);
+	border-radius: 2px;
+	animation: fillProgress linear forwards;
+	animation-timeline: scroll(root);
+	filter: drop-shadow(0 0 3px #5daeff);
+}
+
+.dotsContainer {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.dot {
+	position: absolute;
+	width: 25px;
+	height: 25px;
+	border: none;
+	background: transparent;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.3s ease;
+	padding: 0;
+	border-radius: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	transition: all 0.5s ease;
+
+	&:hover {
+		transform: translate(-50%, -50%) scale(1.15);
+
+		.icon,
+		.label {
+			background: radial-gradient(circle, #094886, #56097a);
+			filter: drop-shadow(0 0 4px #5daeff);
+			opacity: 1;
+		}
+	}
+
+	// Banner
+	&:nth-child(1) {
+		top: 2%;
+
+		.icon,
+		.label {
+			animation-range: -10% 2%;
+		}
+	}
+
+	// About
+	&:nth-child(2) {
+		top: 20%;
+
+		.icon,
+		.label {
+			animation-range: 2% 20%;
+		}
+	}
+
+	// Timeline
+	&:nth-child(3) {
+		top: 44%;
+
+		.icon,
+		.label {
+			animation-range: 22% 44%;
+		}
+	}
+
+	// Skills
+	&:nth-child(4) {
+		top: 85%;
+
+		.icon,
+		.label {
+			animation-range: 70% 85%;
+		}
+	}
+
+	// Contact
+	&:nth-child(5) {
+		top: 100%;
+
+		.icon,
+		.label {
+			animation-range: 90% 100%;
+		}
+	}
+}
+
+.icon {
+	position: relative;
+	z-index: 2;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 15px;
+	height: 15px;
+
+	padding: 3px;
+	border-radius: 50%;
+
+	background: radial-gradient(circle, #07335f, #3e0757);
+
+	animation: iconGlow linear both;
+	animation-timeline: scroll(root);
+
+	filter: drop-shadow(0 0 4px #000000);
+	opacity: 0.2;
+	svg {
+		fill: rgba(0, 0, 0, 0.6);
+	}
+}
+
+.label {
+	position: absolute;
+	top: 50%;
+	left: 130%;
+	font-family: 'Monomaniac One', serif;
+	font-size: 5px;
+	transform: translate(-50%, -50%);
+	color: white;
+	opacity: 0.2;
+	background: transparent !important;
+
+	animation: iconGlow linear both;
+	animation-timeline: scroll(root);
+}
+
+// Mobil LG
+@media (min-width: 360.1px) {
+	.dot {
+		// Banner
+		&:nth-child(1) {
+			top: 2%;
+
+			.icon,
+			.label {
+				animation-range: -10% 2%;
+			}
+		}
+
+		// About
+		&:nth-child(2) {
+			top: 20%;
+
+			.icon,
+			.label {
+				animation-range: 2% 20%;
+			}
+		}
+
+		// Timeline
+		&:nth-child(3) {
+			top: 45%;
+
+			.icon,
+			.label {
+				animation-range: 20% 45%;
+			}
+		}
+
+		// Skills
+		&:nth-child(4) {
+			top: 85%;
+
+			.icon,
+			.label {
+				animation-range: 45% 85%;
+			}
+		}
+
+		// Contact
+		&:nth-child(5) {
+			top: 100%;
+
+			.icon,
+			.label {
+				animation-range: 85% 100%;
+			}
+		}
+	}
+}
+
+// Tablet SM
+@media (min-width: 600px) {
+	.dot {
+		// Banner
+		&:nth-child(1) {
+			top: 2%;
+
+			.icon,
+			.label {
+				animation-range: -10% 2%;
+			}
+		}
+
+		// About
+		&:nth-child(2) {
+			top: 22%;
+
+			.icon,
+			.label {
+				animation-range: 2% 22%;
+			}
+		}
+
+		// Timeline
+		&:nth-child(3) {
+			top: 42%;
+
+			.icon,
+			.label {
+				animation-range: 22% 42%;
+			}
+		}
+
+		// Skills
+		&:nth-child(4) {
+			top: 85%;
+
+			.icon,
+			.label {
+				animation-range: 45% 85%;
+			}
+		}
+
+		// Contact
+		&:nth-child(5) {
+			top: 100%;
+
+			.icon,
+			.label {
+				animation-range: 85% 100%;
+			}
+		}
+	}
+
+	.label {
+		font-size: 10px;
+		left: 150%;
+	}
+
+	.scrollbar {
+		left: 15px;
+	}
+}
+
+// Laptop SM
+@media (min-width: 1024px) {
+	.dot {
+		width: 30px;
+		height: 30px;
+
+		// Banner
+		&:nth-child(1) {
+			top: 2%;
+
+			.icon,
+			.label {
+				animation-range: -10% 2%;
+			}
+		}
+
+		// About
+		&:nth-child(2) {
+			top: 20%;
+
+			.icon,
+			.label {
+				animation-range: 2% 22%;
+			}
+		}
+
+		// Timeline
+		&:nth-child(3) {
+			top: 40%;
+
+			.icon,
+			.label {
+				animation-range: 22% 40%;
+			}
+		}
+
+		// Skills
+		&:nth-child(4) {
+			top: 85%;
+
+			.icon,
+			.label {
+				animation-range: 45% 85%;
+			}
+		}
+
+		// Contact
+		&:nth-child(5) {
+			top: 100%;
+
+			.icon,
+			.label {
+				animation-range: 85% 100%;
+			}
+		}
+	}
+
+	.icon {
+		width: 18px;
+		height: 18px;
+	}
+}
+
+// Laptop LG
+@media (min-width: 1366px) {
+	.dot {
+		// Banner
+		&:nth-child(1) {
+			top: 2%;
+
+			.icon,
+			.label {
+				animation-range: -10% 2%;
+			}
+		}
+
+		// About
+		&:nth-child(2) {
+			top: 20%;
+
+			.icon,
+			.label {
+				animation-range: 2% 22%;
+			}
+		}
+
+		// Timeline
+		&:nth-child(3) {
+			top: 37%;
+
+			.icon,
+			.label {
+				animation-range: 22% 37%;
+			}
+		}
+
+		// Skills
+		&:nth-child(4) {
+			top: 85%;
+
+			.icon,
+			.label {
+				animation-range: 45% 85%;
+			}
+		}
+
+		// Contact
+		&:nth-child(5) {
+			top: 100%;
+
+			.icon,
+			.label {
+				animation-range: 85% 100%;
+			}
+		}
+	}
+}
+
+// Desktop SM
+@media (min-width: 1440px) {
+	.line {
+		width: 6px;
+	}
+
+	.progressFill {
+		width: 3px;
+	}
+	.dot {
+		width: 40px;
+		height: 40px;
+		// Banner
+		&:nth-child(1) {
+			top: 2%;
+
+			.icon,
+			.label {
+				animation-range: -10% 2%;
+			}
+		}
+
+		// About
+		&:nth-child(2) {
+			top: 22%;
+
+			.icon,
+			.label {
+				animation-range: 2% 22%;
+			}
+		}
+
+		// Timeline
+		&:nth-child(3) {
+			top: 37%;
+
+			.icon,
+			.label {
+				animation-range: 22% 37%;
+			}
+		}
+
+		// Skills
+		&:nth-child(4) {
+			top: 85%;
+
+			.icon,
+			.label {
+				animation-range: 45% 85%;
+			}
+		}
+
+		// Contact
+		&:nth-child(5) {
+			top: 100%;
+
+			.icon,
+			.label {
+				animation-range: 85% 100%;
+			}
+		}
+	}
+
+	.icon {
+		width: 30px;
+		height: 30px;
+		padding: 5px;
+	}
+
+	.label {
+		font-size: 13px;
+		left: 160%;
+	}
+
+	.scrollbar {
+		left: 30px;
+		height: 30vh;
+	}
+}
+
+// Desktop LG
+@media (min-width: 1920px) {
+	.dot {
+		// Timeline
+		&:nth-child(3) {
+			top: 35%;
+
+			.icon,
+			.label {
+				animation-range: 22% 35%;
+			}
+		}
+	}
+}

@@ -1,0 +1,63 @@
+
+// Call to Action
+.contact {
+	position: relative;
+	width: 100%;
+	max-width: 700px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding-top: 5vmax;
+	overflow: hidden;
+
+	font-size: 2.5vmax;
+}
+
+.contactContent {
+	position: relative;
+	z-index: 2;
+	text-align: center;
+}
+
+.contactTitle {
+	font-family: 'Monomaniac One', serif;
+	font-size: 100%;
+	color: white;
+	margin-bottom: 1rem;
+}
+
+.contactSubtitle {
+	font-family: 'Darker Grotesque', sans-serif;
+	font-size: 55%;
+	color: rgba(255, 255, 255, 0.8);
+	margin-bottom: 1.5vmax;
+	line-height: 1.6;
+}
+
+.contactLinks {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 1.5rem;
+	margin-top: 1vmax;
+}
+
+.contactLink {
+	font-family: 'Darker Grotesque', sans-serif;
+	font-size: 0.7vmax;
+	color: #ffffff;
+	text-decoration: none;
+
+	padding: 0.4vmax 1vmax;
+
+	border: 1px solid #ffffff;
+	border-radius: 25px;
+	transition: all 0.3s ease;
+
+	&:hover {
+		background: rgba(48, 32, 77, 0.15);
+		border-color: #ffffff;
+		box-shadow: 0 0 7px #ffffff8c;
+		transform: translateY(-2px);
+	}
+}

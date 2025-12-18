@@ -1,2 +1,17 @@
 node_modules
 .next
+.git
+.gitignore
+.env*
+.vercel
+.turbo
+dist
+coverage
+.eslintcache
+.DS_Store
+Thumbs.db
+*.log
+.vscode
+.idea
+.yarn/cache
+.pnpm-store

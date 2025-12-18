@@ -9,6 +9,8 @@ import Gallery from './gallery/gallery';
 import { Tabs, Tab } from './tabs/tabs';
 import './global.css';
 
+export const dynamic = 'force-static';
+
 
 interface Section {
     title: string;
@@ -43,12 +45,8 @@ export default function Workshop() {
     return (
         <>
             <Navbar>
-                <a href='#programming'>Programing</a>
-                <a href='#production'>Production</a>
-                <a href='#prototype'>Prototype</a>
-                <a href='#robotics'>Robotics</a>
-                <a href='#design'>Design</a>
-
+                <a href='/'>Home</a>
+                <a href='/offshore'>Offshore</a>
             </Navbar>
 
             <Banner />

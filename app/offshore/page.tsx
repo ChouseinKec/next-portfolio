@@ -1,21 +1,21 @@
-import styles from './offshore.module.css';
+import styles from './offshore.module.scss';
 import './global.css';
-
 import { Turbine, Underwater } from '../../components/sprite/sprite';
 import Banner from './banner/banner';
 import Window from './window/window';
 import Album from './album/album';
 import Navbar from '@/components/navbar/navbar';
 
+export const dynamic = 'force-static';
+
+
 export default function Offshore() {
 
     return (
         <>
             <Navbar>
-                <a href='#control'>Control-Panel</a>
-                <a href='#cable'>Cable-Loop</a>
-                <a href='#bolting'>Bolting-Campaign</a>
-                <a href='#album'>Album</a>
+                <a href='/'>Home</a>
+                <a href='/workshop'>Workshop</a>
             </Navbar>
 
             <Banner />

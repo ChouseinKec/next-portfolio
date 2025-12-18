@@ -1,3 +1,6 @@
+@use 'sass:math';
+@use 'sass:list';
+
 // SCROLL
 $SCROLL-START: 5;
 @keyframes bannerScroll {
@@ -25,7 +28,7 @@ $SCROLL-START: 5;
 }
 
 @keyframes spaceshipWindowScroll {
-	#{($SCROLL-START / 1.2 ) * 1%} {
+	#{calc($SCROLL-START / 1.2) * 1%} {
 		opacity: 1;
 	}
 }
@@ -50,15 +53,15 @@ $SCROLL-START: 5;
 $BOUNCE-DURATION: 20s;
 $STEPS: 1 0.2 0.5 0.7 0.8 0.4 0.3 1 0.5;
 @keyframes brightnessLoop {
-	@for $i from 1 through length($STEPS) {
-		$opacity: 1 - nth($STEPS, $i);
+	@for $i from 1 through list.length($STEPS) {
+		$opacity: 1 - list.nth($STEPS, $i);
 
 		#{$i * 0.2%} {
 			filter: brightness($opacity);
 		}
 	}
 
-	#{length($STEPS) + 0.1%} {
+	#{list.length($STEPS) + 0.1%} {
 		filter: brightness(1);
 	}
 

@@ -1,4 +1,6 @@
 @use './variables' as *;
+@use 'sass:math';
+@use 'sass:list';
 
 @keyframes orbitRotate {
 	to {
@@ -38,15 +40,15 @@ $orbts: 2, 4;
 }
 
 @function detailsTextsTransform($direction: 1) {
-	@return translate($details_arrow / 1.5) scaleX(calc($details_direction * $direction));
+	@return translate(calc($details_arrow / 1.5)) scaleX(calc($details_direction * $direction));
 }
 
 @mixin detailsAnimation() {
-	@for $o from 1 through length($orbts) {
-		$planet_count: nth($orbts, $o);
+	@for $o from 1 through list.length($orbts) {
+		$planet_count: list.nth($orbts, $o);
 
 		// Keyframes
-		@for $p from 1 through ($planet_count / 2) {
+		@for $p from 1 through math.div($planet_count, 2) {
 			// Animation-Name
 			.orbit[style*='--orbit-planets:#{$planet_count}'] {
 				// Details
@@ -55,7 +57,7 @@ $orbts: 2, 4;
 				}
 
 				// Details Mirror
-				$p-mirror: ($planet_count / 2) + $p - 1;
+				$p-mirror: math.div($planet_count, 2) + $p - 1;
 				.planet[style*='--planet-index:#{$p-mirror}'] .planetDetails {
 					animation-name: detailsFlip#{$planet_count}#{$p};
 				}
@@ -72,13 +74,13 @@ $orbts: 2, 4;
 			}
 
 			// Keyframes
-			$steps: 100 / nth($orbts, $o);
-			$index: ($planet_count / 2) - $p + 1;
+			$steps: math.div(100, list.nth($orbts, $o));
+			$index: math.div($planet_count, 2) - $p + 1;
 
 			$step: (($steps * ($index)) + 0%);
 			$step-mirror: 50 + $step;
 
-			$angle: 360 / $planet_count;
+			$angle: math.div(360, $planet_count);
 			$rotation: $angle * $index;
 			$rotation-reverse: 180 + $rotation;
 

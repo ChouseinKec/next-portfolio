@@ -1,5 +1,7 @@
 @use '../../../mixins/stars.scss' as stars;
 @use './animations.scss' as *;
+@use 'sass:math';
+@use 'sass:list';
 
 // Global selector to target the body element
 :global(body[data-supports-timeline='false']) {
@@ -115,7 +117,7 @@
 	top: 50%;
 	left: 50%;
 
-	transform: translate(-50%, 65%) scale(3.7);
+	transform: translate(-50%, 75%) scale(3.9);
 
 	z-index: 20;
 	pointer-events: none;
@@ -252,8 +254,8 @@
 				content: '';
 				display: block;
 
-				width: 99%;
-				height: 98%;
+				width: 95%;
+				height: 95%;
 
 				position: absolute;
 				top: 50%;
@@ -270,7 +272,7 @@
 
 	&Contact {
 		$offset: 2px;
-
+		display: block;
 		height: var(--contact-height);
 		width: var(--contact-width);
 
@@ -330,10 +332,6 @@
 
 		&:hover {
 			--contact-galaxy-animation: paused;
-			--contact-name-opacity: 0;
-			--contact-galaxy-opacity: 0;
-			--contact-email-opacity: 1;
-
 			transform: scale(1.1);
 		}
 
@@ -346,7 +344,7 @@
 			z-index: 30;
 			opacity: var(--contact-name-opacity);
 			transition: var(--contact-transition);
-
+			text-align: center;
 			font-size: 55%;
 		}
 
@@ -406,24 +404,6 @@
 				transition: var(--contact-transition);
 			}
 		}
-
-		&Email {
-			width: 100%;
-
-			position: absolute;
-			top: 50%;
-			left: 50%;
-
-			transform: translate(-50%, -50%);
-			z-index: 100;
-
-			font-size: 35%;
-			color: white;
-			font-family: Darker Grotesque, Darker Grotesque Fallback;
-
-			opacity: var(--contact-email-opacity);
-			transition: var(--contact-transition);
-		}
 	}
 }
 
@@ -478,8 +458,8 @@
 					animation-name: serverLedLoop;
 					animation-iteration-count: infinite;
 					animation-direction: alternate;
-					animation-duration: random(10) * 0.1s;
-					animation-timing-function: nth($timingFunctions, random(3));
+					animation-duration: math.random(10) * 0.1s;
+					animation-timing-function: list.nth($timingFunctions, math.random(3));
 
 					animation-play-state: var(--animation-state);
 				}
@@ -622,16 +602,17 @@
 		left: 50%;
 
 		transform: translate(-50%, -50%);
-
 		path {
 			stroke: rgba(61, 245, 255, 0.2);
 			animation: floorLoop 5s linear infinite alternate;
 			animation-play-state: var(--animation-state);
+			opacity: 0;
 
 			@for $i from 1 through 20 {
 				&:nth-child(#{$i}) {
-					$delay-ms: random(3) * 1s;
+					$delay-ms: math.div(math.random(40), 10) * 1s;
 					animation-delay: $delay-ms;
+					animation-duration: math.random(5) + 5s;
 				}
 			}
 		}

@@ -167,7 +167,7 @@ const Orbit: React.FC<Orbit> = ({ orbitPlanets, orbitIndex }) => {
 
     return (
         <div className={styles.orbit} style={_style}>
-
+            <div className={styles.stars} />
             {planetDetails.map((planet, index) =>
                 <Planet
                     key={`${planet.planetIndex}-${planet.planetName}`}
@@ -396,7 +396,14 @@ const Skills: React.FC<Skills> = ({ id = 'skills' }) => {
 
                 }
             ]
-        }], []);
+        },
+
+        {
+            orbitIndex: 5,
+            orbitPlanets: []
+        }
+
+    ], []);
 
     return (
         <section id={id} className={styles.galaxy} style={_style} >

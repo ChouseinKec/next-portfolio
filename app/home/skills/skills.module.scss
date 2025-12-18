@@ -1,10 +1,11 @@
 @use './animations' as *;
 @use './variables' as *;
 @use '../../../mixins/stars.scss' as stars;
+@include detailsAnimation();
 
 .galaxy {
 	width: 100vw;
-	height: 150vh;
+	height: 120vh;
 	overflow: hidden;
 
 	position: relative;
@@ -15,6 +16,7 @@
 	justify-content: center;
 	z-index: 1;
 
+	margin-top: 15vmax;
 	--animation-state: paused;
 
 	&:hover {
@@ -25,7 +27,7 @@
 		&::before {
 			content: '';
 
-			height: 50vmax;
+			height: 80%;
 			width: auto;
 			aspect-ratio: 1;
 
@@ -38,22 +40,17 @@
 			transform: translate(-50%, -50%);
 
 			border-radius: 50%;
-			background: conic-gradient(#a009e1, #45ff73, #e263ff, #02ff7c, #fffc63);
-
-			filter: opacity($GALAXY-LIGHT-OPACITY) blur(75px);
 		}
 	}
 
-	@if ($GALAXY-STARS) {
-		&::after {
-			content: '';
-			position: absolute;
-			top: 0;
-			left: 0;
-			opacity: 0.4;
-			filter:blur(1px);
-			box-shadow: stars.stars(500, 2500, 0, 0.3);
-		}
+	&::after {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		opacity: 0.25;
+
+		box-shadow: stars.stars(500, 2500, 0, 0.05);
 	}
 }
 
@@ -94,16 +91,25 @@
 		display: block;
 		border-radius: 50%;
 
-		border: 1px solid rgba(255, 255, 255, 0.15);
+		border: 1px solid rgba(255, 255, 255, 0.075);
 	}
 
 	&:hover {
 		&::after {
 			border: 2px solid rgba(255, 255, 255, 0.2);
-			box-shadow: inset 0px 0px 50px rgba(255, 255, 255, 0.1), 0px 0px 50px rgba(255, 255, 255, 0.1);
+			box-shadow: inset 0px 0px 1.5vmax rgba(255, 255, 255, 0.1), 0px 0px 1.5vmax rgba(255, 255, 255, 0.1);
 		}
 		--animation-state: paused;
 		animation-play-state: var(--animation-state);
+	}
+
+	.stars {
+		width: 100%;
+		height: 100%;
+
+		border-radius: 50%;
+		overflow: hidden;
+		opacity: 0.3;
 	}
 
 	&:nth-child(1) {
@@ -121,7 +127,6 @@
 			}
 
 			&::before {
-				// box-shadow: inset 0 0 5px #4b447940, inset 0 0 10px #ab49c648;
 				filter: blur(5px);
 
 				@if ($ANIMATE) {
@@ -141,6 +146,57 @@
 				&Letter[style*='--index'] {
 					transform: translate(-50%, -50%) rotate(calc(15deg * var(--index))) translateY(calc($TEXT-RADIUS * -1.4ch));
 				}
+			}
+		}
+	}
+
+	&:nth-child(2) {
+		.stars {
+			&::before {
+				content: '';
+				box-shadow: stars.stars(50, 100, 0, 0.2);
+			}
+		}
+	}
+
+	&:nth-child(3) {
+		.stars {
+			&::before {
+				content: '';
+				box-shadow: stars.stars(100, 150, 0, 0.3);
+			}
+		}
+	}
+
+	&:nth-child(4) {
+		.stars {
+			&::before {
+				content: '';
+				box-shadow: stars.stars(150, 250, 0, 0.2);
+			}
+		}
+	}
+
+	&:nth-child(5) {
+		.stars {
+			&::before {
+				content: '';
+				box-shadow: stars.stars(200, 350, 0, 0.3);
+			}
+		}
+	}
+
+	&:nth-child(6) {
+		&::after {
+			border: none;
+		}
+
+		pointer-events: none;
+
+		.stars {
+			&::before {
+				content: '';
+				box-shadow: stars.stars(200, 350, 0, 0.2);
 			}
 		}
 	}
@@ -257,10 +313,10 @@
 		}
 
 		> * {
-			width: calc(var(--details-width) - ($details_arrow / 1.5));
+			width: calc(var(--details-width) - calc($details_arrow / 1.5));
 			height: 100%;
 
-			transform: translate($details_arrow / 1.5) scaleX($details_direction);
+			transform: translate(calc($details_arrow / 1.5)) scaleX($details_direction);
 
 			background: radial-gradient(circle, rgba(255, 0, 195, 0.03), rgba(255, 255, 255, 0.035), rgba(255, 0, 195, 0.035));
 			border-top: 2px dashed rgba(234, 171, 255, 0.2);
@@ -384,17 +440,14 @@
 	}
 }
 
-@include detailsAnimation();
-
 @media (orientation: portrait) {
 	.galaxy {
 		width: 100vw;
-		height: 100vh;
+		height: 60vh;
 
 		@if ($GALAXY-LIGHT) {
 			&::before {
 				height: 40vmax;
-				filter: opacity($GALAXY-LIGHT-OPACITY) blur(50px);
 			}
 		}
 	}
@@ -402,6 +455,186 @@
 	.planet {
 		* {
 			--details-width: 21vmax;
+		}
+	}
+}
+
+// Tablet SM
+@media (min-width: 600px) {
+	.orbit {
+		&:nth-child(2) {
+			.stars {
+				&::before {
+					box-shadow: stars.stars(50, 120, 0, 0.2);
+				}
+			}
+		}
+
+		&:nth-child(3) {
+			.stars {
+				&::before {
+					box-shadow: stars.stars(100, 300, 0, 0.3);
+				}
+			}
+		}
+
+		&:nth-child(4) {
+			.stars {
+				&::before {
+					box-shadow: stars.stars(150, 400, 0, 0.2);
+				}
+			}
+		}
+
+		&:nth-child(5) {
+			.stars {
+				&::before {
+					box-shadow: stars.stars(200, 500, 0, 0.4);
+				}
+			}
+		}
+
+		&:nth-child(6) {
+			.stars {
+				&::before {
+					box-shadow: stars.stars(50, 700, 0, 0.3);
+				}
+			}
+		}
+	}
+}
+
+// Laptop SM
+@media (min-width: 1024px) {
+	.orbit {
+		&:nth-child(2) {
+			.stars {
+				&::before {
+					box-shadow: stars.stars(100, 150, 0, 0.3);
+				}
+			}
+		}
+
+		&:nth-child(3) {
+			.stars {
+				&::before {
+					box-shadow: stars.stars(150, 350, 0, 0.4);
+				}
+			}
+		}
+
+		&:nth-child(4) {
+			.stars {
+				&::before {
+					box-shadow: stars.stars(200, 500, 0, 0.3);
+				}
+			}
+		}
+
+		&:nth-child(5) {
+			.stars {
+				&::before {
+					box-shadow: stars.stars(250, 600, 0, 0.4);
+				}
+			}
+		}
+
+		&:nth-child(6) {
+			.stars {
+				&::before {
+					box-shadow: stars.stars(100, 800, 0, 0.3);
+				}
+			}
+		}
+	}
+}
+
+// Desktop SM
+@media (min-width: 1440px) {
+	.orbit {
+		&:nth-child(2) {
+			.stars {
+				&::before {
+					box-shadow: stars.stars(150, 200, 0, 0.4);
+				}
+			}
+		}
+
+		&:nth-child(3) {
+			.stars {
+				&::before {
+					box-shadow: stars.stars(200, 450, 0, 0.5);
+				}
+			}
+		}
+
+		&:nth-child(4) {
+			.stars {
+				&::before {
+					box-shadow: stars.stars(250, 650, 0, 0.6);
+				}
+			}
+		}
+
+		&:nth-child(5) {
+			.stars {
+				&::before {
+					box-shadow: stars.stars(300, 900, 0, 0.7);
+				}
+			}
+		}
+
+		&:nth-child(6) {
+			.stars {
+				&::before {
+					box-shadow: stars.stars(100, 1000, 0, 0.7);
+				}
+			}
+		}
+	}
+}
+
+// Desktop XL
+@media (min-width: 2560px) {
+	.orbit {
+		&:nth-child(2) {
+			.stars {
+				&::before {
+					box-shadow: stars.stars(100, 400, 0, 0.4);
+				}
+			}
+		}
+
+		&:nth-child(3) {
+			.stars {
+				&::before {
+					box-shadow: stars.stars(200, 800, 0, 0.5);
+				}
+			}
+		}
+
+		&:nth-child(4) {
+			.stars {
+				&::before {
+					box-shadow: stars.stars(300, 1200, 0, 0.6);
+				}
+			}
+		}
+
+		&:nth-child(5) {
+			.stars {
+				&::before {
+					box-shadow: stars.stars(400, 1400, 0, 0.7);
+				}
+			}
+		}
+
+		&:nth-child(6) {
+			.stars {
+				&::before {
+					box-shadow: stars.stars(200, 1500, 0, 0.7);
+				}
+			}
 		}
 	}
 }

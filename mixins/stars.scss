@@ -1,20 +1,23 @@
+@use 'sass:math';
+@use 'sass:string';
+
 @function randomRange($min, $max) {
-	@return calc($min + ($max * (random(1000) * 0.001)));
+	@return calc($min + ($max * (math.random(1000) * 0.001)));
 }
 
 @function randomColor($min, $max) {
-	@return calc($min + random($max));
+	@return calc($min + math.random($max));
 }
 
 @function randomAlpha($min, $max) {
 	$_offset: 100;
 	$_min: $min * $_offset;
 	$_max: $max * $_offset;
-	@return calc(($_min + random($_max)) / $_offset);
+	@return calc(math.div($_min + math.random($_max), $_offset));
 }
 
 @function randomSize($min, $max) {
-	@return calc($min + (random($max) * 0.1));
+	@return calc($min + (math.random($max) * 0.01));
 }
 
 @function stars($count, $max, $min: 0, $size: 0) {
@@ -24,10 +27,9 @@
 		$_x: calc(randomRange($min, $max) * 1px);
 		$_y: calc(randomRange($min, $max) * 1px);
 		$_size: calc(randomSize($size, 10) * 1px);
-		$_color: rgba(randomColor(150, 255), randomColor(150, 255), randomColor(150, 255), randomAlpha(0.5, 1));
+		$_color: rgba(randomColor(100, 255), randomColor(100, 255), randomColor(100, 255), randomAlpha(0.5, 1));
 		$stars: '#{$stars} , #{$_x} #{$_y} 2px #{$_size} #{$_color}';
 	}
 
-	@return unquote($stars);
+	@return string.unquote($stars);
 }
-

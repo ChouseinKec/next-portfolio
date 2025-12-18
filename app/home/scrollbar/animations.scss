@@ -1,0 +1,16 @@
+@keyframes iconGlow {
+	to {
+		background: radial-gradient(circle, #094886, #56097a);
+		filter: drop-shadow(0 0 4px #5daeff);
+		opacity: 1;
+	}
+}
+
+@keyframes fillProgress {
+	from {
+		height: 0%;
+	}
+	to {
+		height: 96%;
+	}
+}

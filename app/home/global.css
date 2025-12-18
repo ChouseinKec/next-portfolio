@@ -6,3 +6,29 @@ body[data-supports-timeline='false'] .placeholder {
     height: 30vh;
 
 }
+
+/* Scroll timelines for section-aware effects */
+#navbar {
+    view-timeline-name: --banner-timeline;
+    view-timeline-axis: block;
+}
+
+#about {
+    view-timeline-name: --about-timeline;
+    view-timeline-axis: block;
+}
+
+#timeline {
+    view-timeline-name: --timeline-timeline;
+    view-timeline-axis: block;
+}
+
+#skills {
+    view-timeline-name: --skills-timeline;
+    view-timeline-axis: block;
+}
+
+#footer {
+    view-timeline-name: --footer-timeline;
+    view-timeline-axis: block;
+}

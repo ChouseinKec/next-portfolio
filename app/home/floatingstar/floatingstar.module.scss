@@ -1,0 +1,118 @@
+@use 'sass:math';
+
+@function random_range($min, $max) {
+	$rand: math.random();
+	$random_range: $min + math.floor($rand * (($max - $min) + 1));
+	@return $random_range;
+}
+$star-count: 100;
+
+.stars {
+	position: absolute;
+	top: 10%;
+	left: 0;
+	width: 100vw;
+	height: 85%;
+	pointer-events: none;
+}
+
+.star {
+	--star-color: var(--primary-color);
+	--star-size: 0.5em;
+	--star-tail-height: 1px;
+	--star-width: calc(var(--star-size) / 2);
+
+	position: absolute;
+	top: calc(var(--top-offset) * 1%);
+	left: calc(var(--left-offset) * 1%);
+	width: var(--star-size);
+	height: var(--star-tail-height);
+	color: var(--star-color);
+	border-radius: 50%;
+	filter: drop-shadow(0 0 3px rgb(255, 255, 255));
+
+	@for $i from 1 through $star-count {
+		&:nth-child(#{$i}) {
+			$rotation-angle: random_range(0, 360);
+			$rotation-rad: $rotation-angle * 0.01745329;
+			$distance: random_range(5, 15);
+
+			--star-size: #{math.div(random_range(20, 50), 100)}em;
+			--top-offset: #{random_range(0, 100)};
+			--left-offset: #{random_range(0, 100)};
+
+			--float-duration: #{random_range(10, 60)}s;
+			--float-delay: #{random_range(0, 5)}s;
+
+			--float-x: #{math.cos($rotation-rad) * $distance}em;
+			--float-y: #{math.sin($rotation-rad) * $distance}em;
+
+			opacity: #{math.div(random_range(30, 50), 100)};
+		}
+	}
+
+	&::before,
+	&::after {
+		position: absolute;
+		content: '';
+		top: 0;
+		left: calc(var(--star-width) / -2);
+		width: var(--star-width);
+		height: 100%;
+		background: linear-gradient(45deg, transparent, rgb(255, 255, 255), transparent);
+		border-radius: inherit;
+		animation: blink 10s var(--float-delay) linear infinite;
+	}
+
+	&::before {
+		transform: rotate(45deg);
+	}
+
+	&::after {
+		transform: rotate(-45deg);
+	}
+}
+
+@keyframes blink {
+	0% {
+		opacity: 0.25;
+	}
+
+	45% {
+		opacity: 0.25;
+	}
+
+	50% {
+		opacity: 0.8;
+	}
+
+	55% {
+		opacity: 0.25;
+	}
+
+	100% {
+		opacity: 0.25;
+	}
+}
+
+// Laptop SM
+@media (min-width: 1024px) {
+	.star {
+		@for $i from 1 through $star-count {
+			&:nth-child(#{$i}) {
+				--star-size: #{math.div(random_range(60, 150), 100)}em;
+			}
+		}
+	}
+}
+
+// Desktop
+@media (min-width: 1600px) {
+	.star {
+		@for $i from 1 through $star-count {
+			&:nth-child(#{$i}) {
+				--star-size: #{math.div(random_range(60, 200), 100)}em;
+			}
+		}
+	}
+}
